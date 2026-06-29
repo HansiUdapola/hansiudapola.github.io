@@ -1,0 +1,573 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMNAP System Transformation — Hansi Udapola</title>
+  <meta name="description" content="How I transformed a static Unity WebGL viewer into a high-performance interactive 3D React platform — eliminating load anxiety and giving admins full autonomy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* ── COMNAP-specific extras ───────────────────────── */
+    .comnap-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 20px 0 0;
+    }
+
+    .phase-block {
+      padding: 24px 26px;
+      border: 0.5px solid var(--border-card);
+      border-radius: var(--r-card);
+      background: var(--surf);
+      margin-bottom: 16px;
+      transition: border-color var(--t);
+    }
+
+    .phase-block:hover {
+      border-color: var(--border-hover);
+    }
+
+    .phase-block__label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber-muted);
+      margin-bottom: 10px;
+    }
+
+    .phase-block__title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .phase-block p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .ai-card {
+      padding: 20px 22px;
+      border: 0.5px solid var(--amber-dark);
+      border-radius: var(--r-card);
+      background: var(--amber-bg);
+    }
+
+    .ai-card__label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber-muted);
+      margin-bottom: 10px;
+    }
+
+    .ai-card__title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--amber-light);
+      margin-bottom: 8px;
+    }
+
+    .ai-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .loading-diagram {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0;
+      margin: 28px 0;
+      border: 0.5px solid var(--border-card);
+      border-radius: var(--r-card);
+      overflow: hidden;
+    }
+
+    .loading-diagram__step {
+      padding: 24px 24px;
+      background: var(--surf);
+    }
+
+    .loading-diagram__step:last-child {
+      background: var(--surf2);
+    }
+
+    .loading-diagram__arrow {
+      padding: 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surf);
+      border-left: 0.5px solid var(--border-card);
+      border-right: 0.5px solid var(--border-card);
+      color: var(--amber);
+    }
+
+    .loading-diagram__arrow svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .loading-diagram__step-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 8px;
+    }
+
+    .loading-diagram__step-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .loading-diagram__step p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .win-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--amber);
+      background: var(--amber-bg);
+      border: 0.5px solid var(--amber-dark);
+      border-radius: var(--r-pill);
+      padding: 3px 10px;
+    }
+
+    @media (max-width: 680px) {
+      .ai-grid { grid-template-columns: 1fr; }
+      .loading-diagram {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+      }
+      .loading-diagram__arrow {
+        border-left: none;
+        border-right: none;
+        border-top: 0.5px solid var(--border-card);
+        border-bottom: 0.5px solid var(--border-card);
+        padding: 12px;
+      }
+      .loading-diagram__arrow svg { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" aria-hidden="true">
+    <div class="progress-bar__fill"></div>
+  </div>
+
+  <div class="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <a href="../index.html"         class="mobile-menu__link">Home</a>
+    <a href="../work.html"          class="mobile-menu__link">Work</a>
+    <a href="../index.html#process" class="mobile-menu__link">Process</a>
+    <a href="../index.html#contact" class="mobile-menu__link">Contact</a>
+    <div class="mobile-menu__divider"></div>
+    <a href="https://github.com/HansiUdapola"   target="_blank" rel="noopener" class="mobile-menu__link">GitHub</a>
+    <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="mobile-menu__link">LinkedIn</a>
+  </div>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="../index.html" class="nav__logo" aria-label="Hansi Udapola — Home">HU</a>
+        <div class="nav__social">
+          <a href="https://github.com/HansiUdapola"   target="_blank" rel="noopener" class="nav__social-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="nav__social-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="../assets/resume.pdf" target="_blank" rel="noopener" class="nav__social-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
+          </a>
+        </div>
+        <div class="nav__links">
+          <a href="../index.html"         class="nav__link">Home</a>
+          <a href="../work.html"          class="nav__link is-active">Work</a>
+          <a href="../index.html#process" class="nav__link">Process</a>
+          <a href="../index.html#contact" class="nav__link">Contact</a>
+        </div>
+        <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container--text">
+
+      <a href="../work.html" class="cs-back">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        All work
+      </a>
+
+      <!-- ── Header ───────────────────────────────────── -->
+      <header class="cs-header reveal">
+        <span class="eyebrow">3D Web Platform · Full-Stack UX · Lead Developer</span>
+        <h1>COMNAP — Transforming a frozen Unity viewer into a live, interactive 3D web platform</h1>
+        <p class="cs-header__sub">
+          The original system trapped users in a loading screen before showing anything useful. I rebuilt it from the ground up — replacing a Unity WebGL monolith with a React + Three.js platform backed by Firestore — and turned a passive viewer into an interactive, admin-owned data tool.
+        </p>
+
+        <div class="cs-meta">
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Role</div>
+            <div class="cs-meta__value">Lead Developer &amp; UI Designer</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Type</div>
+            <div class="cs-meta__value">UX Engineering / Full-Stack</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Stack</div>
+            <div class="cs-meta__value">React, Vite, Three.js, Firestore</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Outcome</div>
+            <div class="cs-meta__value">80% faster perceived load · 100% admin autonomy</div>
+          </div>
+        </div>
+
+        <div class="comnap-stack">
+          <span class="pill pill--neutral">React</span>
+          <span class="pill pill--neutral">Three.js</span>
+          <span class="pill pill--neutral">Vite</span>
+          <span class="pill pill--neutral">Google Firestore</span>
+          <span class="pill pill--neutral">GLTF / 3D Assets</span>
+          <span class="pill pill--neutral">AI-Assisted Dev</span>
+          <span class="pill pill--amber">UX Engineering</span>
+        </div>
+      </header>
+
+      <!-- ── Body ─────────────────────────────────────── -->
+      <div class="cs-body">
+
+        <!-- 1. Problem -->
+        <section class="cs-section reveal">
+          <h2>01 — The problem</h2>
+          <p>
+            The COMNAP system existed to visualise station and research data in a navigable 3D environment. The technical choice was Unity WebGL — reasonable at the time, but it came with a fundamental UX flaw baked into the architecture: users saw nothing until the entire application had downloaded.
+          </p>
+          <p>
+            In UX, a blank screen is a trust problem. Users have no way to know whether something is happening, how long it will take, or whether the page is broken. For a system that was supposed to communicate data clearly, the entry experience communicated nothing.
+          </p>
+
+          <div class="cs-img" style="display:block;padding:0;overflow:hidden;">
+            <img src="../assets/comnap-all-stations.png" alt="Full Antarctica station map — the rebuilt React/Three.js platform showing all research stations plotted and labelled across the continent" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+
+          <h3>Three compounding problems</h3>
+
+          <div class="phase-block">
+            <div class="phase-block__label">Problem 01 — Load Experience</div>
+            <div class="phase-block__title">The "Wait" Problem</div>
+            <p>Unity WebGL required the entire application bundle to download before rendering a single pixel. There was no loading indicator, no progress state, and no partial content — just a blank page. In UX terms, a few seconds of an empty screen is enough to lose a user permanently.</p>
+          </div>
+
+          <div class="phase-block">
+            <div class="phase-block__label">Problem 02 — Interactivity</div>
+            <div class="phase-block__title">Static Data, Static Thinking</div>
+            <p>The viewer was exactly that — a viewer. Users could look at 3D station data but couldn't filter it, search within it, or interact with individual data points in any meaningful way. A map had become the endpoint rather than the beginning of an interaction.</p>
+          </div>
+
+          <div class="phase-block">
+            <div class="phase-block__label">Problem 03 — Admin Dependency</div>
+            <div class="phase-block__title">The Developer Bottleneck</div>
+            <p>Any update to the data displayed in the system — adding a station, correcting coordinates, updating attributes — required a developer to manually edit source files and redeploy. Admins had zero autonomy. Every data change became a technical ticket.</p>
+          </div>
+
+          <div class="insights-grid" style="margin-top: 28px;">
+            <div class="insight-card">
+              <div class="insight-card__number">0%</div>
+              <p class="insight-card__text">Content visible to users before the full Unity bundle completed downloading</p>
+            </div>
+            <div class="insight-card">
+              <div class="insight-card__number">0</div>
+              <p class="insight-card__text">Admin actions possible without developer involvement</p>
+            </div>
+            <div class="insight-card">
+              <div class="insight-card__number">Static</div>
+              <p class="insight-card__text">The entire system — no search, no filter, no interactive data layer</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Research -->
+        <section class="cs-section reveal">
+          <h2>02 — Research &amp; discovery</h2>
+          <p>
+            Before writing a line of code, I needed to understand what the system had to do — not just what it currently did. I mapped the full user journey across two audience types: end users navigating the 3D environment, and admins responsible for maintaining the data behind it.
+          </p>
+
+          <h3>Technical audit</h3>
+          <p>
+            I audited the Unity WebGL build to understand the exact source of the load problem. The bundle included the full Unity runtime, all 3D assets, and application logic in a single download — with no streaming, no chunking, and no partial rendering path. The architecture made progressive loading structurally impossible without a complete rebuild.
+          </p>
+
+          <h3>Admin workflow mapping</h3>
+          <p>
+            I ran structured walkthroughs with the admin team to document their current process for updating station data. The baseline: 4–6 steps involving a developer, a code editor, a deployment pipeline, and a manual data file — to add a single station. The dependency was total.
+          </p>
+
+          <h3>Competitive and technology review</h3>
+          <p>
+            I surveyed how comparable spatial data platforms handle progressive loading — particularly how Google Maps, Mapbox, and Cesium implement tile-based and LOD (level-of-detail) loading strategies. The pattern was consistent: low-fidelity representation first, high-fidelity progressively.
+          </p>
+
+          <div class="cs-img" style="display:block;padding:0;overflow:hidden;">
+            <img src="../assets/comnap-map-overview.png" alt="Interactive filter UI — New Zealand stations highlighted with Scott Base tooltip visible in the 3D map" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </section>
+
+        <!-- 3. Key insights -->
+        <section class="cs-section reveal">
+          <h2>03 — Key insights</h2>
+
+          <div class="pull-quote">
+            <p>"The loading screen is the product, as far as most users are concerned. If that experience is broken, nothing else matters."</p>
+            <cite>— UX principle driving the rebuild strategy</cite>
+          </div>
+
+          <ul>
+            <li><strong>Architecture was the UX problem.</strong> The loading issue wasn't a design symptom — it was baked into the Unity WebGL architecture. No amount of UI polish could fix a monolithic download. The system needed to be rebuilt, not reskinned.</li>
+            <li><strong>Perceived performance matters more than actual performance.</strong> A 3-second wait with visible progress feels faster than a 2-second blank screen. The goal wasn't just to load faster — it was to give users something real to interact with immediately, regardless of total load time.</li>
+            <li><strong>Admin autonomy unlocks product velocity.</strong> Every developer-dependent data update was a bottleneck on both sides — admins waited for changes, developers were interrupted by non-engineering work. A no-code data layer would free both.</li>
+            <li><strong>The 3D space should be a database, not a picture.</strong> The system's value was in the data behind the geometry, not the geometry itself. Making that data filterable, searchable, and queryable was the real opportunity.</li>
+          </ul>
+        </section>
+
+        <!-- 4. AI as efficiency multiplier -->
+        <section class="cs-section reveal">
+          <h2>04 — AI as an engineering efficiency multiplier</h2>
+          <p>
+            The scope of this rebuild — porting 3D rendering logic, rebuilding a data backend, and designing a new admin interface — was significant for a single UX engineer. I used AI deliberately and strategically to compress timeline without sacrificing quality, focusing my own attention on the decisions AI couldn't make: UX judgement, interaction design, and user-facing polish.
+          </p>
+
+          <div class="ai-grid">
+            <div class="ai-card">
+              <div class="ai-card__label">Use 01</div>
+              <div class="ai-card__title">Math &amp; Logic Translation</div>
+              <p>AI translated Unity C# camera and coordinate transformation logic into Three.js equivalents — a task that would have taken weeks of manual porting. I validated and adjusted the output; AI compressed the mechanical work.</p>
+            </div>
+            <div class="ai-card">
+              <div class="ai-card__label">Use 02</div>
+              <div class="ai-card__title">Performance Logic</div>
+              <p>Used LLMs to design efficient async loading patterns — specifically the background GLTF swap logic — ensuring high-quality assets loaded off the main thread without blocking UI interaction.</p>
+            </div>
+            <div class="ai-card">
+              <div class="ai-card__label">Use 03</div>
+              <div class="ai-card__title">Admin Flow Stress-Testing</div>
+              <p>Before writing any CSS, I used AI to identify dead ends and ambiguities in the proposed "Add Station" admin flow. This surfaced 3 edge cases that would have caused user errors — fixed at the design stage, not the QA stage.</p>
+            </div>
+          </div>
+
+          <p>
+            The principle: AI handled the mechanical and logical heavy lifting; I handled every decision that touched a human being. The result was a quality bar that would have required a larger team to reach on a traditional timeline.
+          </p>
+        </section>
+
+        <!-- 5. Design process -->
+        <section class="cs-section reveal">
+          <h2>05 — Design process</h2>
+
+          <h3>Stack selection</h3>
+          <p>
+            The new stack — React + Vite + Three.js + Google Firestore — was chosen to solve each identified problem at the architectural level, not through workarounds on top of a broken foundation.
+          </p>
+          <ul>
+            <li><strong>React + Vite:</strong> Component-based UI for the data layer, search, filters, and admin dashboard. Vite's build optimisation gave fast development iteration and a lean production bundle.</li>
+            <li><strong>Three.js:</strong> Native browser 3D rendering with full control over loading strategy — no Unity runtime overhead, no monolithic download requirement.</li>
+            <li><strong>Google Firestore:</strong> Real-time NoSQL backend that let admins push data changes that appear in the 3D space immediately — no redeploy required.</li>
+          </ul>
+
+          <h3>UX improvement 1 — Progressive 3D loading</h3>
+          <p>
+            The signature UX improvement was a two-step loading strategy that made the application feel instant — even before the high-quality assets finished loading.
+          </p>
+
+          <div class="loading-diagram">
+            <div class="loading-diagram__step">
+              <div class="loading-diagram__step-label">Step 01 — Instant</div>
+              <div class="loading-diagram__step-title">Low-fidelity GLTF + progress bar</div>
+              <p>A lightweight, low-poly version of the 3D map loads in milliseconds. Users see the environment immediately and can begin exploring. A progress bar shows the high-quality assets loading in the background.</p>
+              <span class="win-tag">↳ User is engaged within seconds</span>
+            </div>
+            <div class="loading-diagram__arrow">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+            <div class="loading-diagram__step">
+              <div class="loading-diagram__step-label">Step 02 — Background swap</div>
+              <div class="loading-diagram__step-title">Seamless high-quality swap</div>
+              <p>While the user explores the low-poly map, high-fidelity GLTF assets load asynchronously on a separate thread. When ready, they swap in seamlessly — no visible transition, no interruption to the user's session.</p>
+              <span class="win-tag">↳ No loading anxiety, no blank screen</span>
+            </div>
+          </div>
+
+          <h3>UX improvement 2 — No-code admin dashboard</h3>
+          <p>
+            The admin dashboard was designed for a non-technical user — someone who needed to add, edit, or remove station data without understanding the underlying 3D coordinate system or data schema.
+          </p>
+
+          <div class="cs-img" style="display:block;padding:0;overflow:hidden;">
+            <img src="../assets/comnap-admin-panel.png" alt="Station Content Manager admin dashboard — no-code interface for managing station data, research programs, and facility features" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+
+          <p>
+            The key design decisions: a guided form with inline validation that mapped human-readable inputs (station name, location, category) to the 3D coordinate system automatically; a preview of where the station would appear in the 3D space before saving; and empty state guidance for first-time admins that walked through the process without requiring a manual.
+          </p>
+
+          <h3>UX improvement 3 — From map to searchable database</h3>
+          <p>
+            A React UI layer over the Three.js canvas added the interaction model the original system lacked entirely: real-time search, category filters, and clickable data points that surfaced detailed station information in a side panel — without leaving the 3D view.
+          </p>
+
+          <div class="cs-img-grid">
+            <div class="cs-img" style="aspect-ratio: 4/3; display:block; padding:0; overflow:hidden;">
+              <img src="../assets/comnap-map-overview.png" alt="Country filter active — New Zealand stations highlighted with Scott Base selected and tooltip visible" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="cs-img" style="aspect-ratio: 4/3; display:block; padding:0; overflow:hidden;">
+              <img src="../assets/comnap-station-detail.png" alt="Station detail panel — Wasa station drawer open alongside the 3D Antarctica map, showing research disciplines and facility type" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Solution -->
+        <section class="cs-section reveal">
+          <h2>06 — Solution</h2>
+          <p>
+            The rebuilt COMNAP platform replaced every element of the original system without changing what the product fundamentally did — it still put 3D station data in front of users. But the experience on every dimension was transformed.
+          </p>
+
+          <ul>
+            <li>Progressive two-step GLTF loading — low-poly instant render followed by seamless high-quality background swap</li>
+            <li>React UI layer with real-time search, category filtering, and interactive data points over a Three.js canvas</li>
+            <li>No-code admin dashboard connected to Firestore — station data changes appear in the 3D space in real time, no developer involvement required</li>
+            <li>Guided "Add Station" flow with coordinate abstraction, inline validation, and 3D preview before save</li>
+            <li>Contextual tooltips and empty state guidance across admin features — no manual needed</li>
+            <li>Fully responsive layout — the 3D environment and admin tools work correctly on all screen sizes</li>
+            <li>WCAG-conscious UI layer — keyboard-navigable search, readable contrast ratios, screen-reader-labelled 3D controls</li>
+          </ul>
+
+          <div class="cs-img" style="display:block;padding:0;overflow:hidden;">
+            <img src="../assets/comnap-station-detail.png" alt="Final platform — Three.js 3D map with React search/filter UI and live station detail panel showing Firestore-backed data" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </section>
+
+        <!-- 7. Outcomes -->
+        <section class="cs-section reveal">
+          <h2>07 — Outcomes</h2>
+          <p>
+            Results reflect the post-launch state of the production platform. Perceived performance was validated through user testing; admin efficiency was measured against the documented baseline workflow.
+          </p>
+
+          <div class="outcomes-grid">
+            <div class="outcome-card">
+              <div class="outcome-card__value">~80% faster</div>
+              <div class="outcome-card__label">Perceived load time — users engaged before full asset load completes</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-card__value">100%</div>
+              <div class="outcome-card__label">Reduction in developer dependency for station data updates</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-card__value">0 → full</div>
+              <div class="outcome-card__label">Admin autonomy — from zero self-service to complete data control</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-card__value">All devices</div>
+              <div class="outcome-card__label">Responsive and accessible — desktop, tablet, and mobile</div>
+            </div>
+          </div>
+
+          <div class="pull-quote" style="margin-top: 36px;">
+            <p>"The team now has total control over their data, and the system is fully accessible and responsive on all devices."</p>
+            <cite>— Project outcome summary</cite>
+          </div>
+
+          <h3>What this project demonstrated</h3>
+          <p>
+            COMNAP was an exercise in full-stack UX engineering — where the design decisions and the engineering decisions were inseparable. The progressive loading strategy required both a UX insight (perceived performance > actual performance) and an architectural choice (GLTF streaming + async thread management). The admin dashboard required both a UX design (zero-to-one for non-technical users) and a data layer design (Firestore schema that mapped cleanly to the 3D coordinate system).
+          </p>
+          <p>
+            This is the kind of problem that sits in the gap between design and engineering — and where UX Engineering, as a discipline, earns its place.
+          </p>
+        </section>
+
+        <nav class="cs-nav" aria-label="Case study navigation">
+          <a href="project-8.html" class="cs-nav__item">
+            <span class="cs-nav__dir">← Previous</span>
+            <span class="cs-nav__title">Social Buddy — AI VR Companion</span>
+          </a>
+          <a href="project-7.html" class="cs-nav__item cs-nav__item--right">
+            <span class="cs-nav__dir">Next →</span>
+            <span class="cs-nav__title">SeeThrough — MR Vision Simulation</span>
+          </a>
+        </nav>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">Hansi Udapola &middot; 2025</span>
+        <nav class="footer__links" aria-label="Footer links">
+          <a href="https://github.com/HansiUdapola"   target="_blank" rel="noopener" class="footer__link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="footer__link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="../assets/resume.pdf" target="_blank" rel="noopener" class="footer__link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
+          </a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

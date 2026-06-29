@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Hansi Udapola</title>
+  <meta name="description" content="Selected UX engineering and product design projects by Hansi Udapola.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <a href="index.html"  class="mobile-menu__link">Home</a>
+    <a href="work.html"   class="mobile-menu__link">Work</a>
+    <a href="index.html#process" class="mobile-menu__link">Process</a>
+    <a href="index.html#contact" class="mobile-menu__link">Contact</a>
+    <div class="mobile-menu__divider"></div>
+    <a href="https://github.com/HansiUdapola"   target="_blank" rel="noopener" class="mobile-menu__link">GitHub</a>
+    <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="mobile-menu__link">LinkedIn</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__logo" aria-label="Hansi Udapola — Home">HU</a>
+
+        <div class="nav__social" aria-label="External links">
+          <a href="https://github.com/HansiUdapola" target="_blank" rel="noopener" class="nav__social-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="nav__social-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="assets/resume.pdf" target="_blank" rel="noopener" class="nav__social-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
+          </a>
+        </div>
+
+        <div class="nav__links">
+          <a href="index.html"         class="nav__link">Home</a>
+          <a href="work.html"          class="nav__link">Work</a>
+          <a href="index.html#process" class="nav__link">Process</a>
+          <a href="index.html#contact" class="nav__link">Contact</a>
+        </div>
+
+        <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- WORK PAGE HERO -->
+    <div class="work-page-hero">
+      <div class="container">
+        <span class="eyebrow reveal">Portfolio</span>
+        <h1 class="reveal reveal-d1">Selected projects</h1>
+        <p class="reveal reveal-d2">Three real projects — 3D web engineering, mixed reality research, and doctoral HCI work. Each one a different problem space, the same commitment to rigour.</p>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 80px;">
+      <div class="container">
+
+        <!-- Social Buddy — PhD featured wide card -->
+        <div class="work-page__wide">
+          <a href="case-study/project-8.html" class="project-card project-card--wide reveal reveal-d1">
+            <div class="project-card__thumb" style="overflow: hidden; position: relative;">
+              <img src="assets/social-buddy-hero.jpg"
+                   alt="Hansi Udapola holding a VR headset in front of the Social Buddy Unity prototype"
+                   style="width:100%; height:100%; object-fit:cover; object-position: center 20%;
+                          transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);">
+              <div style="position:absolute; inset:0; background: linear-gradient(to right, rgba(12,11,9,0.35) 0%, transparent 60%); pointer-events:none;"></div>
+              <!-- PhD badge overlay -->
+              <div style="position:absolute; bottom:16px; left:16px;
+                          display:inline-flex; align-items:center; gap:6px;
+                          padding:5px 12px; border-radius:20px;
+                          background:rgba(12,11,9,0.75); border:0.5px solid rgba(239,159,39,0.4);
+                          font-size:11px; font-weight:500; color:#FAC775; letter-spacing:0.04em;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#EF9F27" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                PhD Research
+              </div>
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__meta">Lead UX Researcher / PhD Candidate · HCI</div>
+              <h3 class="project-card__title">Social Buddy — AI-Powered VR Companion for Isolated Adolescents</h3>
+              <p class="project-card__desc">
+                Doctoral research designing, building, and evaluating an AI-powered NPC "social buddy" inside a multiplayer VR game — helping medically isolated teenagers reconnect with peers through shared play. 20 participants, 4 research phases, and 5 generalisable UX design guidelines for socially facilitative AI.
+              </p>
+              <div class="project-card__tags" style="margin-top: 20px;">
+                <span class="pill pill--neutral">VR / XR Design</span>
+                <span class="pill pill--neutral">AI NPC Design</span>
+                <span class="pill pill--neutral">Co-design</span>
+                <span class="pill pill--neutral">Unity 3D · OpenAI</span>
+                <span class="pill pill--neutral">Mixed-Methods Research</span>
+                <span class="pill pill--amber">Large effect on social isolation</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 2-column grid: COMNAP + SeeThrough -->
+        <div class="work-page__grid" style="margin-top: 24px;">
+
+          <a href="case-study/project-6.html" class="project-card reveal reveal-d2">
+            <div class="project-card__thumb" style="overflow:hidden;padding:0;">
+              <img src="assets/comnap-all-stations.png"
+                   alt="COMNAP — Antarctica 3D platform showing all research stations"
+                   style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__meta">Lead Developer &amp; UI Designer</div>
+              <h3 class="project-card__title">COMNAP — 3D Platform Transformation</h3>
+              <p class="project-card__desc">Rebuilt a static Unity WebGL viewer into an interactive React + Three.js platform. Progressive GLTF loading, a no-code admin dashboard backed by Firestore, and a searchable 3D data layer — all engineered with AI-assisted development.</p>
+              <div class="project-card__tags">
+                <span class="pill pill--neutral">React + Three.js</span>
+                <span class="pill pill--neutral">Firestore</span>
+                <span class="pill pill--neutral">AI-Assisted Dev</span>
+                <span class="pill pill--amber">80% faster perceived load</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="case-study/project-7.html" class="project-card reveal reveal-d3">
+            <div class="project-card__thumb">
+              <div class="project-card__thumb-placeholder">
+                <span class="project-card__thumb-number">07</span>
+                <span class="project-card__thumb-tag">Mixed Reality · Accessibility</span>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__meta">Lead Researcher &amp; Developer</div>
+              <h3 class="project-card__title">SeeThrough — Mixed Reality Vision Impairment Simulation</h3>
+              <p class="project-card__desc">A dual-mode MR/VR platform that overlays clinically-grounded vision impairment simulations onto physical and virtual spaces — turning architectural accessibility from a compliance checklist into a felt, embodied design constraint. Built with Blind Low Vision NZ.</p>
+              <div class="project-card__tags">
+                <span class="pill pill--neutral">Mixed Reality</span>
+                <span class="pill pill--neutral">Clinical Research</span>
+                <span class="pill pill--neutral">Accessibility</span>
+                <span class="pill pill--amber">Empathy engineering</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">Hansi Udapola &middot; 2025</span>
+        <nav class="footer__links" aria-label="Footer links">
+          <a href="https://github.com/HansiUdapola" target="_blank" rel="noopener" class="footer__link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="footer__link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="assets/resume.pdf" target="_blank" rel="noopener" class="footer__link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
+          </a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

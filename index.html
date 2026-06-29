@@ -1,0 +1,579 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hansi Udapola — UX Engineer</title>
+  <meta name="description" content="UX Engineer crafting thoughtful digital products at the intersection of design and engineering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <a href="index.html"  class="mobile-menu__link">Home</a>
+    <a href="work.html"   class="mobile-menu__link">Work</a>
+    <a href="#process"    class="mobile-menu__link">Process</a>
+    <a href="#contact"    class="mobile-menu__link">Contact</a>
+    <div class="mobile-menu__divider"></div>
+    <a href="https://github.com/HansiUdapola"  target="_blank" rel="noopener" class="mobile-menu__link">GitHub</a>
+    <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="mobile-menu__link">LinkedIn</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__logo" aria-label="Hansi Udapola — Home">HU</a>
+
+        <div class="nav__social" aria-label="External links">
+          <a href="https://github.com/HansiUdapola" target="_blank" rel="noopener" class="nav__social-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="nav__social-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="assets/resume.pdf" target="_blank" rel="noopener" class="nav__social-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
+          </a>
+        </div>
+
+        <div class="nav__links">
+          <a href="index.html"  class="nav__link">Home</a>
+          <a href="work.html"   class="nav__link">Work</a>
+          <a href="#process"    class="nav__link">Process</a>
+          <a href="#contact"    class="nav__link">Contact</a>
+        </div>
+
+        <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==========================================
+         HERO
+    =========================================== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__inner">
+
+          <div class="hero__content">
+            <span class="eyebrow reveal reveal-d1">UX Engineer</span>
+
+            <h1 class="hero__title reveal reveal-d2">
+              Hansi<br>
+              <span class="accent">Udapola</span>
+            </h1>
+
+            <p class="hero__sub reveal reveal-d3">
+              Designing and building thoughtful digital products at the intersection of research, design, and engineering.
+            </p>
+
+            <div class="hero__actions reveal reveal-d4">
+              <a href="work.html" class="btn btn--primary">
+                View work
+                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="#contact" class="btn btn--ghost">Get in touch</a>
+            </div>
+
+            <div class="hero__stats reveal reveal-d5">
+              <div>
+                <div class="hero__stat-value">5+</div>
+                <div class="hero__stat-label">Years experience</div>
+              </div>
+              <div>
+                <div class="hero__stat-value">24</div>
+                <div class="hero__stat-label">Projects shipped</div>
+              </div>
+              <div>
+                <div class="hero__stat-value">3</div>
+                <div class="hero__stat-label">Design awards</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__img-wrap reveal reveal-d3">
+            <div class="hero__img-box">
+              <img src="assets/profile.jpg" alt="Hansi Udapola"
+                   onerror="this.parentNode.innerHTML='<div class=\'hero__img-placeholder\'><svg viewBox=\'0 0 24 24\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg><span>profile.jpg</span></div>'">
+              <div class="hero__img-overlay"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         ABOUT
+    =========================================== -->
+    <section class="section section--alt" id="about">
+      <div class="container">
+        <div class="about__inner">
+
+          <div class="about__left">
+            <span class="eyebrow reveal">About</span>
+            <h2 class="reveal reveal-d1">Bridging the gap between design intent and engineering reality</h2>
+
+            <div class="about__text">
+              <p class="reveal reveal-d2">
+                I'm a UX Engineer with over five years of experience working across product design and front-end development. My background spans fintech, healthcare, and enterprise SaaS — helping teams translate complex requirements into experiences that feel effortless.
+              </p>
+              <p class="reveal reveal-d3">
+                I believe the best digital products are built when designers and engineers think together from the start. I live in that overlap — running research, crafting interaction models, and shipping production code that honours the original design intent down to the last pixel.
+              </p>
+
+              <div class="about__pills reveal reveal-d4">
+                <span class="pill pill--amber">User Research</span>
+                <span class="pill pill--amber">Interaction Design</span>
+                <span class="pill pill--amber">Design Systems</span>
+                <span class="pill pill--neutral">React</span>
+                <span class="pill pill--neutral">Figma</span>
+                <span class="pill pill--neutral">TypeScript</span>
+                <span class="pill pill--neutral">Accessibility</span>
+                <span class="pill pill--neutral">Prototyping</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about__right">
+            <div class="about__illustration reveal reveal-d2"
+                 style="display:flex; align-items:center; justify-content:center; height:100%; padding: 8px 0;">
+
+              <svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg"
+                   role="img" aria-label="Diagram showing UX Engineering at the intersection of Research, Design, and Engineering"
+                   style="width:100%; max-width:460px; display:block;">
+
+                <defs>
+                  <!-- Amber glow at triple-intersection centre -->
+                  <radialGradient id="ab-cg" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%"   stop-color="#EF9F27" stop-opacity="0.28"/>
+                    <stop offset="100%" stop-color="#EF9F27" stop-opacity="0"/>
+                  </radialGradient>
+                  <!-- Subtle dot grid pattern -->
+                  <pattern id="ab-dots" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+                    <circle cx="1" cy="1" r="1" fill="#EF9F27" fill-opacity="0.07"/>
+                  </pattern>
+                </defs>
+
+                <!-- Dot-grid background -->
+                <rect width="400" height="320" fill="url(#ab-dots)"/>
+
+                <!-- ── THREE VENN CIRCLES ────────────────────────── -->
+                <!-- Circle centres form an equilateral triangle;
+                     centroid ≈ (200, 175). r=90 gives solid triple overlap. -->
+
+                <!-- Research (top) -->
+                <circle cx="200" cy="102" r="90"
+                        stroke="#5A8DB5" stroke-width="1" stroke-opacity="0.45"
+                        fill="#3A6B8A" fill-opacity="0.07"/>
+
+                <!-- Design (bottom-left) -->
+                <circle cx="137" cy="212" r="90"
+                        stroke="#8A5FB0" stroke-width="1" stroke-opacity="0.45"
+                        fill="#7A5A9A" fill-opacity="0.07"/>
+
+                <!-- Engineering (bottom-right) -->
+                <circle cx="263" cy="212" r="90"
+                        stroke="#4A9B6A" stroke-width="1" stroke-opacity="0.45"
+                        fill="#3A7A55" fill-opacity="0.07"/>
+
+                <!-- ── CENTRE INTERSECTION HIGHLIGHT ──────────────── -->
+                <!-- Centroid at (200, 175) -->
+                <circle cx="200" cy="175" r="62" fill="url(#ab-cg)"/>
+                <!-- Pulsing ring -->
+                <circle cx="200" cy="175" r="22"
+                        stroke="#EF9F27" stroke-width="0.8" stroke-opacity="0.6"
+                        stroke-dasharray="3 2" fill="none"/>
+                <!-- Core dot -->
+                <circle cx="200" cy="175" r="4.5" fill="#EF9F27" fill-opacity="0.9"/>
+
+                <!-- Centre label: "UX Engineering" -->
+                <text x="200" y="167"
+                      text-anchor="middle" dominant-baseline="auto"
+                      font-family="Inter, sans-serif" font-size="9"
+                      fill="#FAC775" font-weight="500" letter-spacing="0.12em">UX</text>
+                <text x="200" y="199"
+                      text-anchor="middle"
+                      font-family="Inter, sans-serif" font-size="8.5"
+                      fill="#FAC775" fill-opacity="0.8" font-weight="400" letter-spacing="0.1em">ENGINEERING</text>
+
+                <!-- ── RESEARCH NODE (top, exclusive region ~y 30–80) ── -->
+                <!-- Magnifying-glass icon -->
+                <circle cx="200" cy="54" r="10"
+                        stroke="#6BA3C8" stroke-width="1.5" stroke-opacity="0.85"/>
+                <line x1="208" y1="62" x2="214" y2="68"
+                      stroke="#6BA3C8" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.85"/>
+                <!-- Small tick marks inside the glass → "data" feel -->
+                <line x1="196" y1="54" x2="204" y2="54"
+                      stroke="#6BA3C8" stroke-width="1" stroke-opacity="0.5"/>
+                <line x1="200" y1="50" x2="200" y2="58"
+                      stroke="#6BA3C8" stroke-width="1" stroke-opacity="0.5"/>
+                <!-- Label -->
+                <text x="200" y="24"
+                      text-anchor="middle"
+                      font-family="Inter, sans-serif" font-size="12"
+                      fill="#6BA3C8" font-weight="500" letter-spacing="0.06em">Research</text>
+
+                <!-- ── DESIGN NODE (bottom-left exclusive region) ── -->
+                <!-- Pen-nib icon at (93, 228) -->
+                <path d="M93,218 L100,212 L107,218 L100,228 Z"
+                      stroke="#9B7BAD" stroke-width="1.5" stroke-linejoin="round"
+                      fill="none" stroke-opacity="0.85"/>
+                <line x1="100" y1="228" x2="100" y2="235"
+                      stroke="#9B7BAD" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.85"/>
+                <!-- Label -->
+                <text x="75" y="268"
+                      text-anchor="middle"
+                      font-family="Inter, sans-serif" font-size="12"
+                      fill="#9B7BAD" font-weight="500" letter-spacing="0.06em">Design</text>
+
+                <!-- ── ENGINEERING NODE (bottom-right exclusive region) ── -->
+                <!-- Code-brackets icon at (305, 228) -->
+                <text x="305" y="230"
+                      text-anchor="middle"
+                      font-family="'SF Mono','Consolas','Courier New',monospace"
+                      font-size="15" fill="#5BA87B" fill-opacity="0.9">&lt;/&gt;</text>
+                <!-- Label -->
+                <text x="325" y="268"
+                      text-anchor="middle"
+                      font-family="Inter, sans-serif" font-size="12"
+                      fill="#5BA87B" font-weight="500" letter-spacing="0.06em">Engineering</text>
+
+                <!-- ── PAIRWISE INTERSECTION MICRO-LABELS ─────────── -->
+                <!-- Research ∩ Design (left edge, ~168, 140) -->
+                <text x="155" y="143"
+                      text-anchor="middle"
+                      font-family="Inter, sans-serif" font-size="8"
+                      fill="#BFA0CC" fill-opacity="0.55" letter-spacing="0.04em">Interaction</text>
+
+                <!-- Research ∩ Engineering (right edge, ~245, 140) -->
+                <text x="245" y="143"
+                      text-anchor="middle"
+                      font-family="Inter, sans-serif" font-size="8"
+                      fill="#7BBFA0" fill-opacity="0.55" letter-spacing="0.04em">Prototyping</text>
+
+                <!-- Design ∩ Engineering (bottom, ~200, 245) -->
+                <text x="200" y="250"
+                      text-anchor="middle"
+                      font-family="Inter, sans-serif" font-size="8"
+                      fill="#A0A0CC" fill-opacity="0.55" letter-spacing="0.04em">Systems</text>
+
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SELECTED WORK
+    =========================================== -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-header flex-between">
+          <div>
+            <span class="eyebrow reveal">Selected work</span>
+            <h2 class="reveal reveal-d1">Projects that shaped my practice</h2>
+          </div>
+          <a href="work.html" class="view-all-link reveal reveal-d2">
+            View all
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Social Buddy — PhD featured, full-width with real photo -->
+        <a href="case-study/project-8.html" class="project-card reveal reveal-d1"
+           style="display: block; overflow: hidden;">
+          <div style="display: grid; grid-template-columns: 380px 1fr;">
+            <div class="project-card__thumb"
+                 style="aspect-ratio: auto; min-height: 220px; border-bottom: none;
+                        border-right: 0.5px solid var(--border-card); overflow: hidden; position: relative;">
+              <img src="assets/social-buddy-hero.jpg"
+                   alt="Hansi Udapola holding a VR headset — Social Buddy PhD project"
+                   style="width:100%; height:100%; object-fit:cover; object-position: center 18%;
+                          transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);">
+              <div style="position:absolute; inset:0;
+                          background: linear-gradient(to right, rgba(12,11,9,0.3) 0%, transparent 70%);
+                          pointer-events:none;"></div>
+              <div style="position:absolute; bottom:14px; left:14px;
+                          display:inline-flex; align-items:center; gap:6px;
+                          padding:4px 11px; border-radius:20px;
+                          background:rgba(12,11,9,0.8); border:0.5px solid rgba(239,159,39,0.4);
+                          font-size:11px; font-weight:500; color:#FAC775; letter-spacing:0.04em;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#EF9F27" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                PhD Research
+              </div>
+            </div>
+            <div class="project-card__body"
+                 style="padding: 28px 32px; display: flex; flex-direction: column; justify-content: center;">
+              <div class="project-card__meta">Lead UX Researcher / PhD Candidate · HCI</div>
+              <h3 class="project-card__title" style="font-size: 1.05rem;">
+                Social Buddy — AI-Powered VR Companion for Isolated Adolescents
+              </h3>
+              <p class="project-card__desc">
+                Doctoral research designing and evaluating an AI NPC "social buddy" inside a multiplayer VR game, helping medically isolated teenagers reconnect with peers. Four research phases, 20 participants, and 5 evidence-based UX guidelines for socially facilitative AI.
+              </p>
+              <div class="project-card__tags">
+                <span class="pill pill--neutral">VR / XR Design</span>
+                <span class="pill pill--neutral">AI NPC</span>
+                <span class="pill pill--neutral">Co-design</span>
+                <span class="pill pill--neutral">Unity · OpenAI</span>
+                <span class="pill pill--amber">Large effect on social isolation</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- COMNAP + SeeThrough — 2-col grid -->
+        <div class="work-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 20px;">
+
+          <a href="case-study/project-6.html" class="project-card reveal reveal-d2">
+            <div class="project-card__thumb" style="overflow:hidden;padding:0;">
+              <img src="assets/comnap-all-stations.png"
+                   alt="COMNAP — Antarctica 3D platform showing all research stations"
+                   style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__meta">Lead Developer &amp; UI Designer</div>
+              <h3 class="project-card__title">COMNAP — 3D Platform Transformation</h3>
+              <p class="project-card__desc">Rebuilt a static Unity WebGL viewer into a React + Three.js platform with progressive GLTF loading, a no-code Firestore admin dashboard, and a fully searchable 3D data layer.</p>
+              <div class="project-card__tags">
+                <span class="pill pill--neutral">React · Three.js</span>
+                <span class="pill pill--neutral">Firestore</span>
+                <span class="pill pill--neutral">Progressive Loading</span>
+                <span class="pill pill--amber">80% faster perceived load</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="case-study/project-7.html" class="project-card reveal reveal-d3">
+            <div class="project-card__thumb">
+              <div class="project-card__thumb-placeholder">
+                <span class="project-card__thumb-number">07</span>
+                <span class="project-card__thumb-tag">Mixed Reality · Accessibility</span>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__meta">Lead Researcher &amp; Developer · Blind Low Vision NZ</div>
+              <h3 class="project-card__title">SeeThrough — MR Vision Impairment Simulation</h3>
+              <p class="project-card__desc">A dual-mode MR/VR platform that applies clinically-grounded vision impairment overlays to real and virtual spaces — turning accessibility from a compliance box into a felt design experience.</p>
+              <div class="project-card__tags">
+                <span class="pill pill--neutral">Mixed Reality</span>
+                <span class="pill pill--neutral">Clinical Research</span>
+                <span class="pill pill--neutral">Accessibility</span>
+                <span class="pill pill--amber">Empathy engineering</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SKILLS
+    =========================================== -->
+    <section class="section section--alt" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow reveal">Capabilities</span>
+          <h2 class="reveal reveal-d1">Skills across the full design–build spectrum</h2>
+          <p class="reveal reveal-d2">From early-stage discovery to production-ready components — I'm equipped to contribute at every phase.</p>
+        </div>
+
+        <div class="skills__grid">
+
+          <div class="skill-category reveal reveal-d1">
+            <div class="skill-category__title">Research</div>
+            <div class="skill-category__pills">
+              <span class="pill pill--neutral">User Interviews</span>
+              <span class="pill pill--neutral">Usability Testing</span>
+              <span class="pill pill--neutral">Journey Mapping</span>
+              <span class="pill pill--neutral">Competitive Analysis</span>
+              <span class="pill pill--neutral">Survey Design</span>
+              <span class="pill pill--neutral">Contextual Inquiry</span>
+              <span class="pill pill--neutral">Affinity Mapping</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal reveal-d2">
+            <div class="skill-category__title">Design</div>
+            <div class="skill-category__pills">
+              <span class="pill pill--neutral">Figma</span>
+              <span class="pill pill--neutral">Wireframing</span>
+              <span class="pill pill--neutral">Prototyping</span>
+              <span class="pill pill--neutral">Design Systems</span>
+              <span class="pill pill--neutral">Interaction Design</span>
+              <span class="pill pill--neutral">Visual Design</span>
+              <span class="pill pill--neutral">Accessibility (WCAG)</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal reveal-d3">
+            <div class="skill-category__title">Development</div>
+            <div class="skill-category__pills">
+              <span class="pill pill--neutral">HTML &amp; CSS</span>
+              <span class="pill pill--neutral">JavaScript</span>
+              <span class="pill pill--neutral">React</span>
+              <span class="pill pill--neutral">TypeScript</span>
+              <span class="pill pill--neutral">Storybook</span>
+              <span class="pill pill--neutral">Design Tokens</span>
+              <span class="pill pill--neutral">Animation APIs</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PROCESS
+    =========================================== -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow reveal">How I work</span>
+          <h2 class="reveal reveal-d1">A process built for clarity and momentum</h2>
+          <p class="reveal reveal-d2">Each project is different — but every good outcome follows a thoughtful sequence.</p>
+        </div>
+
+        <div class="process__grid">
+
+          <div class="process-step reveal reveal-d1">
+            <span class="process-step__number">01 — Discover</span>
+            <h3 class="process-step__title">Understand the problem space</h3>
+            <p class="process-step__desc">Stakeholder interviews, user research, competitive analysis. Align on the real problem before defining any solution.</p>
+          </div>
+
+          <div class="process-step reveal reveal-d2">
+            <span class="process-step__number">02 — Define</span>
+            <h3 class="process-step__title">Frame the right problem</h3>
+            <p class="process-step__desc">Synthesise research into clear insights. Journey maps, problem statements, and success criteria that ground all subsequent decisions.</p>
+          </div>
+
+          <div class="process-step reveal reveal-d3">
+            <span class="process-step__number">03 — Design</span>
+            <h3 class="process-step__title">Explore and converge</h3>
+            <p class="process-step__desc">Rapid ideation, wireframing, and prototyping. Multiple directions tested quickly before committing to a direction.</p>
+          </div>
+
+          <div class="process-step reveal reveal-d4">
+            <span class="process-step__number">04 — Deliver</span>
+            <h3 class="process-step__title">Ship with intent</h3>
+            <p class="process-step__desc">High-fidelity designs, annotated specs, and hands-on engineering involvement to ensure the build matches the vision.</p>
+          </div>
+
+          <div class="process-step reveal reveal-d5">
+            <span class="process-step__number">05 — Measure</span>
+            <h3 class="process-step__title">Learn and iterate</h3>
+            <p class="process-step__desc">Post-launch analytics, usability follow-ups, and iteration cycles. The work doesn't end at ship — it deepens.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CONTACT
+    =========================================== -->
+    <section class="section section--alt" id="contact">
+      <div class="container">
+
+        <div class="contact__inner">
+
+          <div class="contact__left">
+            <span class="eyebrow reveal">Contact</span>
+            <h2 class="contact__heading reveal reveal-d1">Let's build something worth using</h2>
+            <p class="contact__text reveal reveal-d2">
+              I'm open to senior UX Engineer, product design, and design–engineering lead roles. I also take on select consultancy projects for teams looking to close the gap between design and production.
+            </p>
+
+            <div class="contact__links reveal reveal-d3">
+              <a href="mailto:hansiudapola2@gmail.com" class="contact__link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                hansiudapola2@gmail.com
+              </a>
+              <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="contact__link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                linkedin.com/in/hansi-udapola
+              </a>
+              <a href="https://github.com/HansiUdapola" target="_blank" rel="noopener" class="contact__link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                github.com/HansiUdapola
+              </a>
+              <a href="assets/resume.pdf" target="_blank" rel="noopener" class="contact__link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download resume
+              </a>
+            </div>
+          </div>
+
+          <div class="contact__right reveal reveal-d2">
+            <form class="contact__form" novalidate>
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+              </div>
+              <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell me about your project or opportunity..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary" style="align-self: flex-start;">
+                Send message
+                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">Hansi Udapola &middot; 2025</span>
+        <nav class="footer__links" aria-label="Footer links">
+          <a href="https://github.com/HansiUdapola" target="_blank" rel="noopener" class="footer__link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener" class="footer__link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="assets/resume.pdf" target="_blank" rel="noopener" class="footer__link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
+          </a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
