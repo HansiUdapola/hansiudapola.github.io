@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=1.2">
 </head>
 
 <body
@@ -62,8 +62,11 @@
       <div class="grid grid-cols-[auto_1fr_auto] items-center h-full gap-6">
 
         <a href="index.html"
-          class="flex items-center justify-center w-9 h-9 border border-shadow-800 rounded-[6px] text-[13px] font-medium tracking-wider text-slate-100 transition-all duration-300 hover:border-gold-500 hover:text-gold-400"
-          aria-label="Hansi Udapola — Home">H</a>
+          class="flex items-center transition-all duration-300 hover:opacity-85"
+          aria-label="Hansi Udapola — Home">
+          <img src="assets/images/hu-logo-darkback.png" alt="Hansi Udapola Logo" class="h-8 w-auto theme-logo-dark">
+          <img src="assets/images/hu-logo-lightback.png" alt="Hansi Udapola Logo" class="h-8 w-auto theme-logo-light">
+        </a>
 
         <div class="hidden md:flex items-center gap-1 justify-center" aria-label="External links">
           <a href="https://github.com/HansiUdapola" target="_blank" rel="noopener"
@@ -127,35 +130,33 @@
 
   <main>
 
-    <!-- HERO (Landing with asymmetric capsule photo and swirling coordinates) -->
     <section class="min-h-[90vh] flex items-center justify-center pt-32 pb-20" data-bg-section="hero">
       <div class="max-w-[1100px] mx-auto px-8 w-full relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-center text-left">
-
-          <div>
-
+          <div class="hero-text-col row-start-2 lg:row-start-auto">
+ 
             <h1
               class="reveal reveal-d2 font-medium leading-[1.1] text-slate-50 tracking-tight text-[clamp(2.5rem,6.5vw,4.5rem)] font-heading">
               Hi, I'm <br class="block sm:hidden"><span id="hero-name"
                 class="text-slate-50 border-r-2 border-gold-500/85 pr-1 animate-pulse"></span>
             </h1>
-
+ 
             <p class="reveal reveal-d3 text-grey-300 leading-relaxed text-lg md:text-xl max-w-[560px] mt-6 mb-10">
               Designing and building thoughtful digital products at the intersection of research, design, and
               engineering.
             </p>
-
+ 
             <span
-              class="reveal reveal-d1 inline-block text-[11px] font-medium tracking-widest uppercase text-bronze-400 bg-bronze-950/60 border border-bronze-800/40 px-3 py-1 rounded-full mb-6">UX
+              class="reveal reveal-d1 primary-tag tracking-widest uppercase mb-6">UX
               Engineer</span>
             <span
-              class="reveal reveal-d1 inline-block text-[11px] font-medium tracking-widest uppercase text-bronze-400 bg-bronze-950/60 border border-bronze-800/40 px-3 py-1 rounded-full mb-6">PhD,
+              class="reveal reveal-d1 primary-tag tracking-widest uppercase mb-6">PhD,
               Computer Science</span>
-
+ 
             <span
-              class="reveal reveal-d1 inline-block text-[11px] font-medium tracking-widest uppercase text-bronze-400 bg-bronze-950/60 border border-bronze-800/40 px-3 py-1 rounded-full mb-6">Specialised
+              class="reveal reveal-d1 primary-tag tracking-widest uppercase mb-6">Specialised
               in HCI</span>
-
+ 
             <div class="reveal reveal-d4 flex flex-wrap gap-4">
               <a href="work.html"
                 class="inline-flex items-center gap-2 px-7 py-3.5 rounded-[6px] text-[13px] font-medium tracking-wide transition-all duration-150 active:scale-97 cursor-pointer bg-gradient-to-r from-gold-500 to-bronze-500 text-shadow-950 border-none shadow-[0_0_24px_rgba(217,172,38,0.25)] hover:brightness-110">
@@ -169,7 +170,7 @@
                 class="inline-flex items-center gap-2 px-7 py-3.5 rounded-[6px] text-[13px] font-medium tracking-wide transition-all duration-150 active:scale-97 cursor-pointer bg-shadow-900/30 text-slate-200 border border-shadow-800 backdrop-blur-sm hover:text-slate-100 hover:bg-shadow-800/50">Get
                 In Touch</a>
             </div>
-
+ 
             <!-- Stats section relocated inside left column -->
             <div
               class="reveal reveal-d5 flex flex-wrap gap-x-10 gap-y-6 mt-16 pt-8 border-t border-shadow-800/60 justify-start max-w-[650px]">
@@ -188,14 +189,14 @@
                     Experience</div>
                 </div>
               </div>
-
+ 
               <!-- Projects Stat -->
               <div class="flex items-center gap-3.5">
                 <div class="text-gold-500/90 flex-shrink-0">
                   <svg class="w-10 h-10 stroke-current fill-none stroke-[1.25]" viewBox="0 0 24 24" aria-hidden="true">
                     <polygon points="12 2 2 7 12 12 22 7 12 2" />
                     <polyline points="2 17 12 22 22 17" />
-                    <polyline points="2 12 12 17 22 12" />
+                    <polyline points="2 12 17 22 12" />
                   </svg>
                 </div>
                 <div class="flex flex-col justify-center">
@@ -204,7 +205,7 @@
                     Projects Shipped</div>
                 </div>
               </div>
-
+ 
               <!-- Awards Stat -->
               <div class="flex items-center gap-3.5">
                 <div class="text-gold-500/90 flex-shrink-0">
@@ -220,12 +221,12 @@
                 </div>
               </div>
             </div>
-
+ 
           </div>
-
+ 
           <!-- Layered organic circles with transparent portrait pop-out illusion -->
           <div
-            class="reveal reveal-d3 flex justify-center lg:justify-end items-center relative w-full max-w-[380px] h-[380px] md:max-w-[460px] md:h-[460px] mx-auto lg:mx-0">
+            class="hero-image-col reveal reveal-d3 row-start-1 lg:row-start-auto flex justify-center lg:justify-end items-center relative w-full max-w-[380px] h-[380px] md:max-w-[460px] md:h-[460px] mx-auto lg:mx-0">
 
             <!-- Swirling/Concentric coordinate paths in background -->
             <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none scale-140">
@@ -549,8 +550,10 @@
           <table class="w-full text-left border-collapse">
             <thead>
               <tr class="border-b border-shadow-800/40 bg-shadow-950/20">
-                <th class="py-4 px-6 text-[11px] font-medium tracking-widest uppercase text-bronze-400 w-1/4">Capability Area</th>
-                <th class="py-4 px-6 text-[11px] font-medium tracking-widest uppercase text-bronze-400">Skills / Methodologies</th>
+                <th class="py-4 px-6 text-[11px] font-medium tracking-widest uppercase text-bronze-400 w-1/4">Capability
+                  Area</th>
+                <th class="py-4 px-6 text-[11px] font-medium tracking-widest uppercase text-bronze-400">Skills /
+                  Methodologies</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-shadow-800/20">
@@ -620,8 +623,10 @@
     <section class="py-24 border-t border-shadow-800/40 relative z-10" id="experience" data-bg-section="skills">
       <div class="max-w-[1100px] mx-auto px-8">
         <div class="mb-14">
-          <span class="reveal inline-block text-[11px] font-medium tracking-widest uppercase text-gold-400 mb-5">History</span>
-          <h2 class="reveal reveal-d1 text-[clamp(1.8rem,3.8vw,2.6rem)] font-medium leading-[1.15] text-slate-50 tracking-tight mb-4">
+          <span
+            class="reveal inline-block text-[11px] font-medium tracking-widest uppercase text-gold-400 mb-5">History</span>
+          <h2
+            class="reveal reveal-d1 text-[clamp(1.8rem,3.8vw,2.6rem)] font-medium leading-[1.15] text-slate-50 tracking-tight mb-4">
             Professional Experience
           </h2>
           <p class="reveal reveal-d2 text-grey-300 leading-relaxed max-w-[480px]">
@@ -630,158 +635,213 @@
         </div>
 
         <div class="reveal reveal-d3 flex flex-col gap-6">
-          
+
           <!-- Experience 1 -->
-          <div class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
+          <div
+            class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
             <div>
-              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Oct 2025 — Present</span>
+              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Oct 2025 —
+                Present</span>
               <h3 class="text-lg font-semibold text-slate-50 font-heading leading-tight">HCI Research Fellow</h3>
               <div class="text-[13px] text-grey-450 mt-1">Jix Reality Pvt. Ltd.</div>
               <div class="text-[12px] text-grey-500 mt-0.5">Christchurch, New Zealand</div>
             </div>
             <div>
               <ul class="flex flex-col gap-3 list-none">
-                <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>AI &amp; XR Software Development:</strong> Built interactive XR prototypes integrating AI models and real-time interactions.
+                <li
+                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                  <strong>AI &amp; XR Software Development:</strong> Built interactive XR prototypes integrating AI
+                  models and real-time interactions.
                 </li>
-                <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Proof-of-Concept Engineering:</strong> Rapid prototyping to validate research ideas into working demos and testable solutions.
+                <li
+                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                  <strong>Proof-of-Concept Engineering:</strong> Rapid prototyping to validate research ideas into
+                  working demos and testable solutions.
                 </li>
-                <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Client Discovery &amp; Empathy:</strong> Client meetings, stakeholder interviews, requirements gathering, and insight translation.
+                <li
+                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                  <strong>Client Discovery &amp; Empathy:</strong> Client meetings, stakeholder interviews, requirements
+                  gathering, and insight translation.
                 </li>
               </ul>
-              
+
               <!-- Collapsible Details -->
               <div class="experience-details-collapsed hidden mt-3">
                 <ul class="flex flex-col gap-3 list-none">
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>UX &amp; Interaction Design (XR):</strong> Implemented user-centered UX, interaction design, and seamless AI-driven experiences.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>UX &amp; Interaction Design (XR):</strong> Implemented user-centered UX, interaction design,
+                    and seamless AI-driven experiences.
                   </li>
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Mentorship &amp; Technical Leadership:</strong> Mentored interns, provided technical guidance, and delivered milestones to deadlines.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>Mentorship &amp; Technical Leadership:</strong> Mentored interns, provided technical
+                    guidance, and delivered milestones to deadlines.
                   </li>
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Emerging Tech R&amp;D:</strong> Evaluated new frameworks, tools, and AI/XR platforms to support innovation.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>Emerging Tech R&amp;D:</strong> Evaluated new frameworks, tools, and AI/XR platforms to
+                    support innovation.
                   </li>
                 </ul>
               </div>
-              
-              <button class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
+
+              <button
+                class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
                 See all details
               </button>
             </div>
           </div>
 
           <!-- Experience 2 -->
-          <div class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
+          <div
+            class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
             <div>
-              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Nov 2024 — Feb 2025</span>
+              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Nov 2024 — Feb
+                2025</span>
               <h3 class="text-lg font-semibold text-slate-55 font-heading leading-tight">HCI Research Fellow</h3>
               <div class="text-[13px] text-grey-450 mt-1">Jix Reality Pvt. Ltd.</div>
               <div class="text-[12px] text-grey-500 mt-0.5">Christchurch, New Zealand</div>
             </div>
             <div>
               <ul class="flex flex-col gap-3 list-none">
-                <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Opportunity Discovery &amp; Market Insight:</strong> Web-scraped and analysed Unity asset market data to identify gaps/opportunities; delivered actionable recommendations.
+                <li
+                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                  <strong>Opportunity Discovery &amp; Market Insight:</strong> Web-scraped and analysed Unity asset
+                  market data to identify gaps/opportunities; delivered actionable recommendations.
                 </li>
-                <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>UCD Research Planning:</strong> Prepared UCD user study designs, including research plans and study protocols.
+                <li
+                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                  <strong>UCD Research Planning:</strong> Prepared UCD user study designs, including research plans and
+                  study protocols.
                 </li>
               </ul>
-              
+
               <!-- Collapsible Details -->
               <div class="experience-details-collapsed hidden mt-3">
                 <ul class="flex flex-col gap-3 list-none">
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Insight Synthesis (Human-AI Interaction):</strong> Conducted literature review and produced human-AI virtual interaction design guidelines.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>Insight Synthesis (Human-AI Interaction):</strong> Conducted literature review and produced
+                    human-AI virtual interaction design guidelines.
                   </li>
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Feasibility Study Documentation (Digital Humans):</strong> Documented feasibility study reporting on digital human experience considerations.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>Feasibility Study Documentation (Digital Humans):</strong> Documented feasibility study
+                    reporting on digital human experience considerations.
                   </li>
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>R&amp;D Knowledge Documentation:</strong> Consolidated past R&amp;D project outputs into clear, reusable records.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>R&amp;D Knowledge Documentation:</strong> Consolidated past R&amp;D project outputs into
+                    clear, reusable records.
                   </li>
                 </ul>
               </div>
-              
-              <button class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
+
+              <button
+                class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
                 See all details
               </button>
             </div>
           </div>
 
           <!-- Experience 3 -->
-          <div class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
+          <div
+            class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
             <div>
-              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Feb 2023 — Jun 2025</span>
-              <h3 class="text-lg font-semibold text-slate-55 font-heading leading-tight">Academic Tutor - UX Engineering</h3>
+              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Feb 2023 — Jun
+                2025</span>
+              <h3 class="text-lg font-semibold text-slate-55 font-heading leading-tight">Academic Tutor - UX Engineering
+              </h3>
               <div class="text-[13px] text-grey-450 mt-1">Victoria University of Wellington</div>
               <div class="text-[12px] text-grey-500 mt-0.5">Wellington, New Zealand</div>
             </div>
             <div>
               <ul class="flex flex-col gap-3 list-none">
-                <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>UX Research &amp; Evaluation Support:</strong> Supported students with UX methods including heuristic evaluation, cognitive walkthroughs, and usability testing, and interpreted findings into improvements.
+                <li
+                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                  <strong>UX Research &amp; Evaluation Support:</strong> Supported students with UX methods including
+                  heuristic evaluation, cognitive walkthroughs, and usability testing, and interpreted findings into
+                  improvements.
                 </li>
-                <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>UX Artefacts &amp; Prototyping:</strong> Guided creation of personas, user workflows, and journey maps, and supported evaluation of low-, mid-, and high-fidelity prototypes.
+                <li
+                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                  <strong>UX Artefacts &amp; Prototyping:</strong> Guided creation of personas, user workflows, and
+                  journey maps, and supported evaluation of low-, mid-, and high-fidelity prototypes.
                 </li>
               </ul>
-              
+
               <!-- Collapsible Details -->
               <div class="experience-details-collapsed hidden mt-3">
                 <ul class="flex flex-col gap-3 list-none">
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Assessment &amp; Feedback:</strong> Marked essays, assignments, and examinations; provided clear, criteria-based feedback.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>Assessment &amp; Feedback:</strong> Marked essays, assignments, and examinations; provided
+                    clear, criteria-based feedback.
                   </li>
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Student &amp; Course Support:</strong> Staffed student helpdesk sessions and online discussion forums; attended staff meetings with coordinating lecturers.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>Student &amp; Course Support:</strong> Staffed student helpdesk sessions and online
+                    discussion forums; attended staff meetings with coordinating lecturers.
                   </li>
                 </ul>
               </div>
-              
-              <button class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
+
+              <button
+                class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
                 See all details
               </button>
             </div>
           </div>
 
           <!-- Experience 4 -->
-          <div class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
+          <div
+            class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
             <div>
-              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Mar 2017 — May 2021</span>
+              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Mar 2017 — May
+                2021</span>
               <h3 class="text-lg font-semibold text-slate-55 font-heading leading-tight">Lecturer &amp; Tutor</h3>
               <div class="text-[13px] text-grey-450 mt-1">University of Kelaniya</div>
               <div class="text-[12px] text-grey-500 mt-0.5">Colombo, Sri Lanka</div>
             </div>
             <div>
               <ul class="flex flex-col gap-3 list-none">
-                <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Teaching Delivery:</strong> Prepared and delivered lectures; facilitated tutorials, seminars, and laboratory sessions; stimulated and guided class discussions.
+                <li
+                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                  <strong>Teaching Delivery:</strong> Prepared and delivered lectures; facilitated tutorials, seminars,
+                  and laboratory sessions; stimulated and guided class discussions.
                 </li>
-                <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Assessment &amp; Learning Support:</strong> Designed and marked essays, assignments, and examinations; advised and supported students on academic matters.
+                <li
+                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                  <strong>Assessment &amp; Learning Support:</strong> Designed and marked essays, assignments, and
+                  examinations; advised and supported students on academic matters.
                 </li>
               </ul>
-              
+
               <!-- Collapsible Details -->
               <div class="experience-details-collapsed hidden mt-3">
                 <ul class="flex flex-col gap-3 list-none">
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Curriculum &amp; Academic Planning:</strong> Contributed to course/degree requirements, curriculum review, and academic planning; compiled bibliographies and curated specialised reading materials.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>Curriculum &amp; Academic Planning:</strong> Contributed to course/degree requirements,
+                    curriculum review, and academic planning; compiled bibliographies and curated specialised reading
+                    materials.
                   </li>
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Supervision &amp; Leadership:</strong> Supervised honours student work programs and supported/supervised tutorial staff and teaching delivery.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>Supervision &amp; Leadership:</strong> Supervised honours student work programs and
+                    supported/supervised tutorial staff and teaching delivery.
                   </li>
-                  <li class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Health Data Analysis (Diary Studies):</strong> Partnered with the Faculty of Health to analyse 6M+ diary entries, supporting evidence-based findings and reporting.
+                  <li
+                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+                    <strong>Health Data Analysis (Diary Studies):</strong> Partnered with the Faculty of Health to
+                    analyse 6M+ diary entries, supporting evidence-based findings and reporting.
                   </li>
                 </ul>
               </div>
-              
-              <button class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
+
+              <button
+                class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
                 See all details
               </button>
             </div>

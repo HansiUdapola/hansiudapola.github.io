@@ -212,7 +212,30 @@ body {
 
 /* Custom Hamburger overrides */
 .hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 9999px;
   background: #cccace;
+  transition: transform var(--t-fast), opacity var(--t-fast);
+}
+
+.mobile-menu.is-open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Theme-responsive Navbar Logo Styles */
+.theme-logo-light {
+  display: none;
+}
+
+:root.light-theme .theme-logo-dark {
+  display: none;
+}
+
+:root.light-theme .theme-logo-light {
+  display: block;
 }
 
 /* Case study specifics */
@@ -626,6 +649,18 @@ body {
   --color-shadow-800: #e5e3e8;
   --color-shadow-900: #f2f1f4;
   --color-shadow-950: #ffffff;
+
+  --color-bronze-50: #1f1505;
+  --color-bronze-100: #2c1e07;
+  --color-bronze-200: #583c0e;
+  --color-bronze-300: #845915;
+  --color-bronze-400: #af771d;
+  --color-bronze-500: #db9524;
+  --color-bronze-600: #e2aa50;
+  --color-bronze-700: #eabf7b;
+  --color-bronze-800: #f1d5a7;
+  --color-bronze-900: #f8ead3;
+  --color-bronze-950: #fbf4e9;
 
   /* Project page layout variable overrides (Light Theme) */
   --bg-panel: rgba(248, 247, 250, 0.65);
@@ -1150,3 +1185,23 @@ body {
   background-color: var(--selection-bg);
   color: var(--selection-text);
 }
+
+/* Custom Grid Row Ordering for Hero Section */
+.hero-text-col {
+  grid-row: 2;
+}
+
+.hero-image-col {
+  grid-row: 1;
+}
+
+@media (min-width: 1024px) {
+  .hero-text-col {
+    grid-row: auto;
+  }
+  .hero-image-col {
+    grid-row: auto;
+  }
+}
+
+
