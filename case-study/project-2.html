@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SeeThrough - MR Vision Simulation - Hansi Udapola</title>
+  <meta name="description"
+    content="Bridging the Empathy & Expertise Gap by transforming static visual impairment goggles into a dynamic Mixed Reality simulation tool.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body
+  class="bg-shadow-950 text-slate-100 font-sans antialiased min-h-screen relative selection:bg-gold-500/20 selection:text-gold-200">
+
+  <!-- Interactive Sparkles Canvas -->
+  <canvas id="sparkle-canvas"></canvas>
+
+  <!-- Full Viewport Background Switcher -->
+  <div class="portfolio-bg-container" aria-hidden="true">
+    <div class="portfolio-bg-sheet active" data-bg="project-2"
+      style="background-image: var(--bg-project-2), url('../assets/images/seethrough-hero.jpg');"></div>
+  </div>
+
+  <div class="progress-bar fixed top-0 left-0 w-full h-[2px] bg-shadow-800 z-[200]" aria-hidden="true">
+    <div class="progress-bar__fill h-full w-0 bg-gold-500 transition-all duration-[0.08s] linear origin-left"></div>
+  </div>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div
+    class="mobile-menu fixed inset-0 z-[99] bg-shadow-950/95 backdrop-blur-lg flex flex-col justify-center items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-300"
+    role="dialog" aria-label="Navigation menu">
+    <a href="../index.html"
+      class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">Home</a>
+    <a href="../work.html"
+      class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">Work</a>
+    <a href="../index.html#experience"
+      class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">Experience</a>
+    <a href="../index.html#contact"
+      class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">Contact</a>
+    <div class="mobile-menu__divider w-10 h-[0.5px] bg-shadow-800 my-2 opacity-0 transition-opacity duration-550"></div>
+    <a href="https://github.com/HansiUdapola" target="_blank" rel="noopener"
+      class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">GitHub</a>
+    <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener"
+      class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">LinkedIn</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="nav fixed top-0 w-full z-[100] h-16 glass-nav transition-all duration-300"
+    aria-label="Primary navigation">
+    <div class="max-w-[1100px] mx-auto px-8 h-full">
+      <div class="grid grid-cols-[auto_1fr_auto] items-center h-full gap-6">
+
+        <a href="../index.html"
+          class="flex items-center justify-center w-9 h-9 border border-shadow-800 rounded-[6px] text-[13px] font-medium tracking-wider text-slate-100 transition-all duration-300 hover:border-gold-500 hover:text-gold-400"
+          aria-label="Hansi Udapola - Home">HU</a>
+
+        <div class="hidden md:flex items-center gap-1 justify-center" aria-label="External links">
+          <a href="https://github.com/HansiUdapola" target="_blank" rel="noopener"
+            class="flex items-center gap-1.75 px-3 py-1.75 rounded-[6px] text-[12px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-200 hover:bg-shadow-900/40">
+            <svg class="w-3.5 h-3.5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener"
+            class="flex items-center gap-1.75 px-3 py-1.75 rounded-[6px] text-[12px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-200 hover:bg-shadow-900/40">
+            <svg class="w-3.5 h-3.5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            LinkedIn
+          </a>
+          <a href="../assets/docs/resume.pdf" target="_blank" rel="noopener"
+            class="flex items-center gap-1.75 px-3 py-1.75 rounded-[6px] text-[12px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-200 hover:bg-shadow-900/40">
+            <svg class="w-3.5 h-3.5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Resume
+          </a>
+        </div>
+
+        <div class="hidden md:flex items-center gap-1 justify-end">
+          <a href="../index.html"
+            class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">Home</a>
+          <a href="../work.html"
+            class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-slate-100 bg-shadow-900/40">Work</a>
+          <a href="../index.html#experience"
+            class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">Experience</a>
+          <a href="../index.html#contact"
+            class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">Contact</a>
+          <button id="theme-toggle"
+            class="ml-2 flex items-center justify-center w-9 h-9 border border-shadow-800 rounded-[6px] text-grey-400 hover:text-slate-100 hover:border-gold-500 hover:bg-shadow-900/40 transition-all duration-300 cursor-pointer"
+            aria-label="Toggle dark/light mode"></button>
+        </div>
+
+        <div class="flex items-center gap-2 justify-end md:hidden">
+          <button id="theme-toggle-mobile"
+            class="flex items-center justify-center w-9 h-9 border border-shadow-800 rounded-[6px] text-grey-400 hover:text-slate-100 transition-all duration-300 cursor-pointer"
+            aria-label="Toggle dark/light mode"></button>
+          <button
+            class="nav__hamburger flex flex-col justify-center gap-[5px] w-9 h-9 p-2 border border-border-card rounded-[6px] cursor-pointer transition-all duration-300 hover:border-border-hover"
+            aria-label="Toggle menu" aria-expanded="false">
+            <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10">
+    <div class="max-w-[760px] mx-auto px-8">
+
+      <a href="../work.html" class="cs-back">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+        All work
+      </a>
+
+      <!-- Hero photograph -->
+      <div class="cs-hero-img reveal">
+        <img src="../assets/images/seethrough-hero.jpg" alt="SeeThrough MR vision simulation in action">
+        <div class="cs-hero-img__overlay"></div>
+      </div>
+      <!-- Header -->
+      <header class="cs-header reveal">
+        <span class="inline-block text-[11px] font-medium tracking-widest uppercase text-bronze-400 mb-4">HCI Research ·
+          Empathic Design · MR/VR Dev</span>
+        <h1
+          class="text-slate-50 leading-[1.1] font-medium tracking-tight mb-6 font-heading text-[clamp(2rem,5.5vw,3.2rem)]">
+          SeeThrough: Bridging the Empathy <br class="hidden sm:block">&amp; Expertise Gap</h1>
+        <p class="cs-header__sub text-grey-300">
+          Transforming static visual impairment goggles into a dynamic Mixed Reality simulation tool. Designed to foster
+          real empathy among architects and urban designers, helping them understand the lived experience and the “WHY”
+          behind design accessibility codes like NZS 4121:2001.
+        </p>
+
+        <!-- Vertical Table-Like Meta Section -->
+        <div class="mt-10 flex flex-col border-t border-shadow-800/40">
+          <div
+            class="py-4 border-b border-shadow-800/40 grid grid-cols-1 md:grid-cols-[120px_1fr] gap-2 md:gap-6 items-baseline">
+            <div class="cs-meta__label">Role</div>
+            <div class="cs-meta__value">Lead Researcher &amp; Developer</div>
+          </div>
+          <div
+            class="py-4 border-b border-shadow-800/40 grid grid-cols-1 md:grid-cols-[120px_1fr] gap-2 md:gap-6 items-baseline">
+            <div class="cs-meta__label">Key Skills</div>
+            <div class="cs-meta__value">Empathic Design · XR Development · Workflow Integration · Prototyping</div>
+          </div>
+          <div
+            class="py-4 border-b border-shadow-800/40 grid grid-cols-1 md:grid-cols-[120px_1fr] gap-2 md:gap-6 items-baseline">
+            <div class="cs-meta__label">Tech Stack</div>
+            <div class="cs-meta__value">Unity 3D, Shader Graphs, URP, Mixed Reality, Virtual Reality</div>
+          </div>
+          <div
+            class="py-4 border-b border-shadow-800/40 grid grid-cols-1 md:grid-cols-[120px_1fr] gap-2 md:gap-6 items-baseline">
+            <div class="cs-meta__label">Outcome</div>
+            <div class="cs-meta__value">[Pending specific project outcomes / user feedback]</div>
+          </div>
+        </div>
+
+        <!-- Tags List -->
+        <div class="comnap-stack mt-8 flex flex-wrap gap-2">
+          <span class="primary-tag">Mixed Reality (MR)</span>
+          <span class="primary-tag">Virtual Reality (VR)</span>
+          <span class="primary-tag">Empathic Design</span>
+          <span class="primary-tag">Unity 3D</span>
+          <span class="primary-tag">Shader Graphs</span>
+          <span class="primary-tag">Accessibility</span>
+        </div>
+      </header>
+
+      <!-- Body -->
+      <div class="cs-body">
+
+        <!-- 1. Problem -->
+        <section class="cs-section reveal">
+          <h2>The "Compliance vs. Reality" Gap</h2>
+          <p>
+            Architects and planners frequently follow accessibility building codes as a compliance exercise, lacking a
+            true understanding of the lived experience of vision impairment.
+          </p>
+          <ul class="flex flex-col gap-2.5 mt-4 mb-5 list-none">
+            <li
+              class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+              <strong>Invisible Barriers:</strong> Design professionals often lack the firsthand perspective needed to
+              see hazards before they are built.
+            </li>
+            <li
+              class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+              <strong>Costly Mistakes:</strong> Uninformed design decisions create permanent physical barriers that are
+              highly expensive to retrofit once a building is finished.
+            </li>
+            <li
+              class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+              <strong>Static Limitations:</strong> Traditional fixed goggles cannot adapt to new digital designs or
+              represent the complexity and variability of different vision conditions.
+            </li>
+            <li
+              class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
+              <strong>Expert Shortage:</strong> A lack of qualified personnel to assess every project means
+              accessibility is too often treated as an afterthought.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 2. Research & Empathic Design -->
+        <section class="cs-section reveal">
+          <h2>Discovery &amp; Empathic Design</h2>
+          <p>
+            Given a strict three-month timeline to research, design, and develop a solution, the focus was prioritised
+            heavily on driving empathy for design decision-makers rather than building a flawless medical diagnostic
+            tool.
+          </p>
+
+          <div class="phase-block">
+            <div class="phase-block__label">Requirements Gathering</div>
+            <div class="phase-block__title">Stakeholder Alignment</div>
+            <p>Conducted initial meetings to define the core requirement: delivering a tech solution specifically for
+              the professionals involved in urban design and built environment decision-making.</p>
+          </div>
+
+          <div class="phase-block">
+            <div class="phase-block__label">Lived Experience</div>
+            <div class="phase-block__title">Partnering with Blind Low Vision NZ</div>
+            <p>Collaborated for contextual understanding and experience sharing, gathering grounded requirements to
+              ensure the product fostered genuine empathy.</p>
+          </div>
+
+          <div class="phase-block">
+            <div class="phase-block__label">Prototyping &amp; UX</div>
+            <div class="phase-block__title">Customisable Overlays &amp; Workflows</div>
+            <p>Designed low-fidelity interfaces to map different visual impairment profiles (e.g., Glaucoma, AMD) and
+              integrated "Workflow Presets" so designers could save and re-test profiles across project stages.</p>
+          </div>
+        </section>
+
+        <!-- 3. Technical Implementation -->
+        <section class="cs-section reveal">
+          <h2>Technical Implementation &amp; XR Development</h2>
+          <p>
+            The simulation was built using Unity 3D, relying heavily on the Universal Render Pipeline (URP) and Shader
+            Graphs to create highly customisable visual impairment parameters that respond in real-time.
+          </p>
+
+          <div class="overflow-x-auto mt-8 border border-shadow-800/40 rounded-lg bg-shadow-900/5">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-shadow-800/40 bg-shadow-950/20">
+                  <th class="py-4 px-6 text-[11px] font-medium tracking-widest uppercase text-bronze-400 w-1/4">Feature
+                    / Stack</th>
+                  <th class="py-4 px-6 text-[11px] font-medium tracking-widest uppercase text-bronze-400">Implementation
+                    Details</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-shadow-800/20">
+                <tr class="hover:bg-shadow-900/10 transition-colors">
+                  <td class="py-4 px-6">
+                    <div class="text-[14px] font-semibold text-slate-100 font-heading">Shader Graph Overlays</div>
+                  </td>
+                  <td class="py-4 px-6 text-[13px] text-grey-300 leading-relaxed">
+                    Customised shaders using variables for severity, blur, distortion, and colour parameters. Utilised
+                    available medical resources to stylise these overlays for empathic accuracy.
+                  </td>
+                </tr>
+                <tr class="hover:bg-shadow-900/10 transition-colors">
+                  <td class="py-4 px-6">
+                    <div class="text-[14px] font-semibold text-slate-100 font-heading">Impairment Simulation</div>
+                  </td>
+                  <td class="py-4 px-6 text-[13px] text-grey-300 leading-relaxed">
+                    Programmed logic to simulate colour blindness (blue, red, green, and full) and spatial blind spots
+                    (central blind spot, curtain blind, peripheral loss, and multiple blind spots).
+                  </td>
+                </tr>
+                <tr class="hover:bg-shadow-900/10 transition-colors">
+                  <td class="py-4 px-6">
+                    <div class="text-[14px] font-semibold text-slate-100 font-heading">MR Auditing (See-Through)</div>
+                  </td>
+                  <td class="py-4 px-6 text-[13px] text-grey-300 leading-relaxed">
+                    A pass-through mode allowing professionals to physically walk through existing spaces with digital
+                    overlays to identify real-world hazards.
+                  </td>
+                </tr>
+                <tr class="hover:bg-shadow-900/10 transition-colors">
+                  <td class="py-4 px-6">
+                    <div class="text-[14px] font-semibold text-slate-100 font-heading">VR Pre-Visualisation</div>
+                  </td>
+                  <td class="py-4 px-6 text-[13px] text-grey-300 leading-relaxed">
+                    A mode for testing digital architectural designs proactively before a single brick is laid, enabling
+                    barrier-free decision-making early in the process.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Prototype Screen Recording -->
+        <section class="cs-section reveal">
+          <h2>Prototype Demonstration</h2>
+          <div class="mt-6 border border-shadow-800/40 rounded-lg overflow-hidden bg-shadow-900/5 p-4 md:p-6">
+            <div
+              class="aspect-video w-full rounded-md overflow-hidden border border-shadow-800/20 shadow-lg bg-shadow-900 flex items-center justify-center text-grey-500 text-sm">
+              <!-- Placeholder for Prototype Video / Image -->
+              [ Prototype Video Placeholder ]
+            </div>
+            <p class="text-[13px] text-grey-400 mt-4 leading-relaxed text-center mb-0">
+              Demonstrating the dynamic MR overlays adjusting severity and impairment types in real-time.
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. Evaluation -->
+        <section class="cs-section reveal">
+          <h2>Outcomes &amp; Impact</h2>
+          <p>
+            [ Placeholder for final outcomes. Awaiting details on user feedback, success metrics, or deliverables at the
+            end of the three-month timeline. ]
+          </p>
+        </section>
+
+        <nav class="cs-nav" aria-label="Case study navigation">
+          <a href="project-3.html" class="cs-nav__item">
+            <span class="cs-nav__dir">← Previous</span>
+            <span class="cs-nav__title">Social Buddy - VR Companion</span>
+          </a>
+          <a href="project-1.html" class="cs-nav__item cs-nav__item--right">
+            <span class="cs-nav__dir">Next →</span>
+            <span class="cs-nav__title">COMNAP - Antarctic Visualiser</span>
+          </a>
+        </nav>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-shadow-800/40 py-8 relative z-10">
+    <div class="max-w-[1100px] mx-auto px-8">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <span class="text-[13px] text-grey-500">Hansi Udapola &middot; 2025</span>
+        <nav class="flex items-center gap-1" aria-label="Footer links">
+          <a href="https://github.com/HansiUdapola" target="_blank" rel="noopener"
+            class="flex items-center gap-1.5 px-[10px] py-1.5 rounded-[6px] text-[12px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-200 hover:bg-shadow-900/40">
+            <svg class="w-3.5 h-3.5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/hansi-udapola/" target="_blank" rel="noopener"
+            class="flex items-center gap-1.5 px-[10px] py-1.5 rounded-[6px] text-[12px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-200 hover:bg-shadow-900/40">
+            <svg class="w-3.5 h-3.5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            LinkedIn
+          </a>
+          <a href="../assets/docs/resume.pdf" target="_blank" rel="noopener"
+            class="flex items-center gap-1.5 px-[10px] py-1.5 rounded-[6px] text-[12px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-200 hover:bg-shadow-900/40">
+            <svg class="w-3.5 h-3.5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Resume
+          </a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/script.js"></script>
+</body>
+
+</html>
