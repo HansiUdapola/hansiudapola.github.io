@@ -4,14 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hansi Udapola — UX Engineer</title>
+  <title>Hansi Udapola - UX Engineer</title>
   <meta name="description"
     content="UX Engineer crafting thoughtful digital products at the intersection of design and engineering.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=1.2">
+  <link rel="stylesheet" href="assets/css/style.css?v=1.3">
+  <script>
+    // Theme initialization (critical to run before paint to prevent flashing)
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+  </script>
 </head>
 
 <body
@@ -23,11 +30,8 @@
   <!-- Full Viewport Background Switcher -->
   <div class="portfolio-bg-container" aria-hidden="true">
     <div class="portfolio-bg-sheet active" data-bg="hero" style="background-image: var(--bg-hero);"></div>
-    <div class="portfolio-bg-sheet" data-bg="project-8"
+    <div class="portfolio-bg-sheet animate-fade-in" data-bg="project-8"
       style="background-image: var(--bg-project-8), url('assets/images/social-buddy-hero.jpg');"></div>
-    <div class="portfolio-bg-sheet" data-bg="project-6"
-      style="background-image: var(--bg-project-6), url('assets/images/comnap-all-stations.png');"></div>
-    <div class="portfolio-bg-sheet" data-bg="project-7" style="background-image: var(--bg-project-7);"></div>
     <div class="portfolio-bg-sheet" data-bg="about" style="background-image: var(--bg-about);"></div>
     <div class="portfolio-bg-sheet" data-bg="skills" style="background-image: var(--bg-skills);"></div>
     <div class="portfolio-bg-sheet" data-bg="process" style="background-image: var(--bg-process);"></div>
@@ -38,9 +42,9 @@
   <div
     class="mobile-menu fixed inset-0 z-[99] bg-shadow-950/95 backdrop-blur-lg flex flex-col justify-center items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-300"
     role="dialog" aria-label="Navigation menu">
-    <a href="index.html"
+    <a href="#hero"
       class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">Home</a>
-    <a href="work.html"
+    <a href="#work"
       class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">Work</a>
     <a href="#about"
       class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">About</a>
@@ -61,9 +65,8 @@
     <div class="max-w-[1100px] mx-auto px-8 h-full">
       <div class="grid grid-cols-[auto_1fr_auto] items-center h-full gap-6">
 
-        <a href="index.html"
-          class="flex items-center transition-all duration-300 hover:opacity-85"
-          aria-label="Hansi Udapola — Home">
+        <a href="index.html" class="flex items-center transition-all duration-300 hover:opacity-85"
+          aria-label="Hansi Udapola - Home">
           <img src="assets/images/hu-logo-darkback.png" alt="Hansi Udapola Logo" class="h-8 w-auto theme-logo-dark">
           <img src="assets/images/hu-logo-lightback.png" alt="Hansi Udapola Logo" class="h-8 w-auto theme-logo-light">
         </a>
@@ -98,9 +101,9 @@
         </div>
 
         <div class="hidden md:flex items-center gap-1 justify-end">
-          <a href="index.html"
+          <a href="#hero"
             class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">Home</a>
-          <a href="work.html"
+          <a href="#work"
             class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">Work</a>
           <a href="#about"
             class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">About</a>
@@ -130,47 +133,41 @@
 
   <main>
 
-    <section class="min-h-[90vh] flex items-center justify-center pt-32 pb-20" data-bg-section="hero">
+    <section class="min-h-[90vh] flex items-center justify-center pt-32 pb-20" id="hero" data-bg-section="hero">
       <div class="max-w-[1100px] mx-auto px-8 w-full relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-center text-left">
           <div class="hero-text-col row-start-2 lg:row-start-auto">
- 
+
             <h1
               class="reveal reveal-d2 font-medium leading-[1.1] text-slate-50 tracking-tight text-[clamp(2.5rem,6.5vw,4.5rem)] font-heading">
               Hi, I'm <br class="block sm:hidden"><span id="hero-name"
                 class="text-slate-50 border-r-2 border-gold-500/85 pr-1 animate-pulse"></span>
             </h1>
- 
+
             <p class="reveal reveal-d3 text-grey-300 leading-relaxed text-lg md:text-xl max-w-[560px] mt-6 mb-10">
               Designing and building thoughtful digital products at the intersection of research, design, and
               engineering.
             </p>
- 
-            <span
-              class="reveal reveal-d1 primary-tag tracking-widest uppercase mb-6">UX
+
+            <span class="reveal reveal-d1 primary-tag tracking-widest uppercase mb-6">UX
               Engineer</span>
-            <span
-              class="reveal reveal-d1 primary-tag tracking-widest uppercase mb-6">PhD,
+            <span class="reveal reveal-d1 primary-tag tracking-widest uppercase mb-6">PhD,
               Computer Science</span>
- 
-            <span
-              class="reveal reveal-d1 primary-tag tracking-widest uppercase mb-6">Specialised
+
+            <span class="reveal reveal-d1 primary-tag tracking-widest uppercase mb-6">Specialised
               in HCI</span>
- 
+
             <div class="reveal reveal-d4 flex flex-wrap gap-4">
-              <a href="work.html"
-                class="inline-flex items-center gap-2 px-7 py-3.5 rounded-[6px] text-[13px] font-medium tracking-wide transition-all duration-150 active:scale-97 cursor-pointer bg-gradient-to-r from-gold-500 to-bronze-500 text-shadow-950 border-none shadow-[0_0_24px_rgba(217,172,38,0.25)] hover:brightness-110">
+              <a href="work.html" class="btn-primary">
                 View Work
                 <svg class="w-4 h-4 stroke-current fill-none stroke-[2]" viewBox="0 0 24 24" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </a>
-              <a href="#contact"
-                class="inline-flex items-center gap-2 px-7 py-3.5 rounded-[6px] text-[13px] font-medium tracking-wide transition-all duration-150 active:scale-97 cursor-pointer bg-shadow-900/30 text-slate-200 border border-shadow-800 backdrop-blur-sm hover:text-slate-100 hover:bg-shadow-800/50">Get
-                In Touch</a>
+              <a href="#contact" class="btn-secondary">Get In Touch</a>
             </div>
- 
+
             <!-- Stats section relocated inside left column -->
             <div
               class="reveal reveal-d5 flex flex-wrap gap-x-10 gap-y-6 mt-16 pt-8 border-t border-shadow-800/60 justify-start max-w-[650px]">
@@ -189,45 +186,49 @@
                     Experience</div>
                 </div>
               </div>
- 
+
               <!-- Projects Stat -->
               <div class="flex items-center gap-3.5">
                 <div class="text-gold-500/90 flex-shrink-0">
-                  <svg class="w-10 h-10 stroke-current fill-none stroke-[1.25]" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <svg class="w-10 h-10 stroke-current fill-none stroke-[1.25]" viewBox="0 0 24 24"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
                     <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
                     <line x1="12" y1="22.08" x2="12" y2="12" />
                   </svg>
                 </div>
                 <div class="flex flex-col justify-center">
-                  <div class="text-2xl md:text-3xl font-medium text-slate-50 tracking-tight leading-none">24</div>
+                  <div class="text-2xl md:text-3xl font-medium text-slate-50 tracking-tight leading-none">10+</div>
                   <div class="text-[10px] font-medium tracking-widest uppercase text-grey-400 mt-1.5 leading-none">
-                    Projects Shipped</div>
+                    Projects Delivered</div>
                 </div>
               </div>
- 
+
               <!-- Awards Stat -->
               <div class="flex items-center gap-3.5">
                 <div class="text-gold-500/90 flex-shrink-0">
-                  <svg class="w-10 h-10 stroke-current fill-none stroke-[1.25]" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg class="w-10 h-10 stroke-current fill-none stroke-[1.25]" viewBox="0 0 24 24"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
                     <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
                     <path d="M4 22h16" />
                     <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
                     <path d="M12 2a6 6 0 0 1 6 6v5a6 6 0 0 1-6 6 6 6 0 0 1-6-6V8a6 6 0 0 1 6-6z" />
-                    <polygon points="12 6 13.5 9 16.5 9.5 14 11.5 15 14.5 12 13 9 14.5 10 11.5 7.5 9.5 10.5 9" fill="currentColor" />
+                    <polygon points="12 6 13.5 9 16.5 9.5 14 11.5 15 14.5 12 13 9 14.5 10 11.5 7.5 9.5 10.5 9"
+                      fill="currentColor" />
                   </svg>
                 </div>
                 <div class="flex flex-col justify-center">
                   <div class="text-2xl md:text-3xl font-medium text-slate-50 tracking-tight leading-none">3</div>
                   <div class="text-[10px] font-medium tracking-widest uppercase text-grey-400 mt-1.5 leading-none">
-                    Design Awards</div>
+                    Awards</div>
                 </div>
               </div>
             </div>
- 
+
           </div>
- 
+
           <!-- Layered organic circles with transparent portrait pop-out illusion -->
           <div
             class="hero-image-col reveal reveal-d3 row-start-1 lg:row-start-auto flex justify-center lg:justify-end items-center relative w-full max-w-[380px] h-[380px] md:max-w-[460px] md:h-[460px] mx-auto lg:mx-0">
@@ -297,7 +298,7 @@
               work</span>
             <h2
               class="reveal reveal-d1 text-[clamp(1.8rem,3.8vw,2.6rem)] font-medium leading-[1.15] text-slate-50 tracking-tight">
-              Projects that shaped my practice</h2>
+              Projects that Shaped My Practice</h2>
           </div>
           <a href="work.html"
             class="reveal reveal-d2 inline-flex items-center gap-2 text-[13px] font-medium text-grey-400 hover:text-gold-500 transition-colors duration-300">
@@ -309,14 +310,14 @@
           </a>
         </div>
 
-        <!-- Social Buddy — PhD featured, full-width with real photo -->
+        <!-- Social Buddy - PhD featured, full-width with real photo -->
         <div class="mb-8" data-bg-section="project-8">
-          <a href="case-study/project-3.html"
+          <a href="case-study/project-1.html"
             class="reveal reveal-d1 block rounded-[12px] overflow-hidden glass-card transition-all duration-300">
             <div class="grid grid-cols-1 lg:grid-cols-[400px_1fr]">
               <div class="min-h-[240px] lg:border-r border-shadow-800/40 overflow-hidden relative">
                 <img src="assets/images/social-buddy-hero.jpg"
-                  alt="Hansi Udapola holding a VR headset — Social Buddy PhD project"
+                  alt="Hansi Udapola holding a VR headset - Social Buddy PhD project"
                   class="w-full h-full object-cover object-[center_18%] transition-transform duration-700 ease-out hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-r from-shadow-950/40 to-transparent pointer-events-none">
                 </div>
@@ -356,183 +357,50 @@
           </a>
         </div>
 
-        <!-- COMNAP + SeeThrough — 2-col grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-          <div data-bg-section="project-6">
-            <a href="case-study/project-1.html"
-              class="reveal reveal-d2 block rounded-[12px] overflow-hidden glass-card transition-all duration-300">
-              <div class="aspect-video bg-shadow-900/30 border-b border-shadow-800/40 overflow-hidden">
-                <img src="assets/images/comnap-all-stations.png"
-                  alt="COMNAP — Antarctica 3D platform showing all research stations"
-                  class="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105">
-              </div>
-              <div class="p-8">
-                <div class="text-[10px] font-medium tracking-widest uppercase text-gold-500/90 mb-3.5">Lead Developer
-                  &amp; UI Designer</div>
-                <h3 class="text-lg md:text-xl font-medium text-slate-50 mb-3">COMNAP — 3D Platform Transformation</h3>
-                <p class="text-[14px] text-grey-300 leading-relaxed mb-6">Rebuilt a static Unity WebGL viewer into a
-                  React + Three.js platform with progressive GLTF loading, a no-code Firestore admin dashboard, and a
-                  fully searchable 3D data layer.</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="primary-tag">React · Three.js</span>
-                  <span class="primary-tag">Firestore</span>
-                  <span class="primary-tag">Progressive Loading</span>
-                  <span class="primary-tag">80% faster perceived load</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div data-bg-section="project-7">
-            <a href="case-study/project-2.html"
-              class="reveal reveal-d3 block rounded-[12px] overflow-hidden glass-card transition-all duration-300">
-              <div class="aspect-video bg-shadow-900/30 border-b border-shadow-800/40 relative">
-                <div
-                  class="absolute inset-0 flex flex-col justify-center items-center gap-1.5 p-6 text-center select-none bg-shadow-900/40">
-                  <span class="text-4xl font-medium text-grey-400/30 tracking-tight">07</span>
-                  <span class="text-[10px] font-medium tracking-widest uppercase text-grey-500">Mixed Reality ·
-                    Accessibility</span>
-                </div>
-              </div>
-              <div class="p-8">
-                <div class="text-[10px] font-medium tracking-widest uppercase text-gold-500/90 mb-3.5">Lead Researcher
-                  &amp; Developer · Blind Low Vision NZ</div>
-                <h3 class="text-lg md:text-xl font-medium text-slate-50 mb-3">SeeThrough — MR Vision Impairment
-                  Simulation</h3>
-                <p class="text-[14px] text-grey-300 leading-relaxed mb-6">A dual-mode MR/VR platform that applies
-                  clinically-grounded vision impairment overlays to real and virtual spaces — turning accessibility from
-                  a compliance box into a felt design experience.</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="primary-tag">Mixed Reality</span>
-                  <span class="primary-tag">Clinical Research</span>
-                  <span class="primary-tag">Accessibility</span>
-                  <span class="primary-tag">Empathy engineering</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-        </div>
-
       </div>
     </section>
 
     <!-- ABOUT SECTION (Rebuilt with 3D isometric sculpture on the right) -->
     <section class="py-24 border-t border-shadow-800/40 relative z-10" id="about" data-bg-section="about">
       <div class="max-w-[1100px] mx-auto px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
+        <div class="flex flex-col w-full">
           <div class="flex flex-col">
             <span
               class="reveal inline-block text-[11px] font-medium tracking-widest uppercase text-gold-400 mb-5">About</span>
             <h2
               class="reveal reveal-d1 text-[clamp(1.8rem,3.8vw,2.6rem)] font-medium leading-[1.15] text-slate-50 tracking-tight mb-6">
-              Bridging the gap between design intent and engineering reality</h2>
+              Bridging Design and Engineering</h2>
 
             <div class="flex flex-col gap-5">
               <p class="reveal reveal-d2 text-grey-300 leading-relaxed">
-                I'm a UX Engineer with over five years of experience working across product design and front-end
-                development. My background spans fintech, healthcare, and enterprise SaaS — helping teams translate
-                complex requirements into experiences that feel effortless.
+                I don't just design concepts; I translate them into reality. As a passionate UX Researcher &amp;
+                Developer with a PhD specialising in XR-AI, I bridge the gap between human-centred design and technical
+                execution.
               </p>
               <p class="reveal reveal-d3 text-grey-300 leading-relaxed">
-                I believe the best digital products are built when designers and engineers think together from the
-                start. I live in that overlap — running research, crafting interaction models, and shipping production
-                code that honours the original design intent down to the last pixel.
+                My expertise spans the entire product lifecycle: from rigorous HCI research and data-driven iteration to
+                full-stack software development across web, mobile, and immersive spatial platforms. I leverage modern
+                AI-integrated workflows and advanced data analytics to build scalable solutions that solve real-world
+                problems.
+              </p>
+              <p class="reveal reveal-d3 text-grey-300 leading-relaxed">
+                With a background in university lecturing and a portfolio spanning digital health, assistive technology,
+                and immersive experiences, I bring a unique blend of technical mentorship, empathic design, and
+                engineering rigor.
               </p>
 
               <div class="reveal reveal-d4 flex flex-wrap gap-2 mt-4">
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-bronze-950 border border-bronze-800/40 text-bronze-300">User
-                  Research</span>
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-bronze-950 border border-bronze-800/40 text-bronze-300">Interaction
-                  Design</span>
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-bronze-950 border border-bronze-800/40 text-bronze-300">Design
-                  Systems</span>
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">React</span>
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Figma</span>
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">TypeScript</span>
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Accessibility</span>
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Prototyping</span>
+                <span class="primary-tag">UX Research</span>
+                <span class="primary-tag">HCI</span>
+                <span class="primary-tag">Unity 3D</span>
+                <span class="primary-tag">Design Systems</span>
+                <span class="primary-tag">Figma</span>
+                <span class="primary-tag">XR-AI</span>
+                <span class="primary-tag">Accessibility</span>
+                <span class="primary-tag">Prototyping</span>
               </div>
             </div>
           </div>
-
-          <!-- Restored 3D isometric pillars/shapes representing Research, Design, Dev -->
-          <div class="reveal reveal-d2 flex justify-center lg:justify-end">
-            <svg viewBox="0 0 440 400" fill="none" xmlns="http://www.w3.org/2000/svg"
-              class="w-full h-auto max-w-[380px]">
-              <style>
-                @keyframes float-sculpture-about {
-
-                  0%,
-                  100% {
-                    transform: translateY(0px);
-                  }
-
-                  50% {
-                    transform: translateY(-8px);
-                  }
-                }
-
-                .svg-3d-about {
-                  animation: float-sculpture-about 6s ease-in-out infinite;
-                }
-              </style>
-              <g class="svg-3d-about">
-                <!-- 3D ISOMETRIC GRID BASE -->
-                <g stroke="#d9ac26" stroke-opacity="0.1" stroke-width="1">
-                  <line x1="60" y1="280" x2="260" y2="180" />
-                  <line x1="100" y1="300" x2="300" y2="200" />
-                  <line x1="140" y1="320" x2="340" y2="220" />
-                  <line x1="180" y1="340" x2="380" y2="240" />
-                  <line x1="260" y1="180" x2="380" y2="240" />
-                  <line x1="220" y1="160" x2="340" y2="220" />
-                  <line x1="180" y1="140" x2="300" y2="200" />
-                  <line x1="140" y1="120" x2="260" y2="180" />
-                </g>
-                <!-- 3D Cylinder -->
-                <ellipse cx="120" cy="230" rx="20" ry="10" fill="#1e1805" stroke="#d9ac26" stroke-width="1.5" />
-                <path d="M100 130 v100 a20 10 0 0 0 40 0 v-100 Z" fill="url(#cyl-grad-about)" stroke="#d9ac26"
-                  stroke-width="1.5" />
-                <ellipse cx="120" cy="130" rx="20" ry="10" fill="#e8cd7d" stroke="#d9ac26" stroke-width="1.5" />
-                <text x="120" y="112" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#e8cd7d"
-                  text-anchor="middle">RESEARCH</text>
-                <!-- 3D Glass panel -->
-                <path d="M180 160 L280 110 L320 130 L220 180 Z" fill="url(#glass-grad-about)" stroke="#cccace"
-                  stroke-width="1.5" stroke-opacity="0.3" />
-                <text x="250" y="94" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#e8cd7d"
-                  text-anchor="middle">DESIGN</text>
-                <!-- 3D Voxel Cube -->
-                <g transform="translate(260, 200)">
-                  <path d="M10 20 L40 35 L40 65 L10 50 Z" fill="#1f1505" stroke="#db9524" stroke-width="1.5" />
-                  <path d="M40 35 L70 20 L70 50 L40 65 Z" fill="#1e1805" stroke="#d9ac26" stroke-width="1.5" />
-                  <path d="M10 20 L40 5 L70 20 L40 35 Z" fill="#d9ac26" stroke="#d9ac26" stroke-width="1.5" />
-                  <text x="40" y="-10" font-family="monospace" font-size="9" fill="#e8cd7d"
-                    text-anchor="middle">&lt;DEV&gt;</text>
-                </g>
-              </g>
-              <defs>
-                <linearGradient id="cyl-grad-about" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#1e1805" />
-                  <stop offset="100%" stop-color="#1e1805" />
-                </linearGradient>
-                <linearGradient id="glass-grad-about" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#19171c" stop-opacity="0.85" />
-                  <stop offset="100%" stop-color="#121014" stop-opacity="0.4" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-
         </div>
       </div>
     </section>
@@ -547,78 +415,81 @@
             class="reveal reveal-d1 text-[clamp(1.8rem,3.8vw,2.6rem)] font-medium leading-[1.15] text-slate-50 tracking-tight mb-4">
             Skills across the full design–build spectrum</h2>
           <p class="reveal reveal-d2 text-grey-300 leading-relaxed max-w-[480px]">From early-stage discovery to
-            production-ready components — I'm equipped to contribute at every phase.</p>
+            production-ready components - I'm equipped to contribute at every phase.</p>
         </div>
 
-        <div class="reveal reveal-d3 overflow-x-auto mt-8 border border-shadow-800/40 rounded-lg bg-shadow-900/5">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="border-b border-shadow-800/40 bg-shadow-950/20">
-                <th class="py-4 px-6 text-[11px] font-medium tracking-widest uppercase text-bronze-400 w-1/4">Capability
-                  Area</th>
-                <th class="py-4 px-6 text-[11px] font-medium tracking-widest uppercase text-bronze-400">Skills /
-                  Methodologies</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-shadow-800/20">
-              <tr class="hover:bg-shadow-900/10 transition-colors">
-                <td class="py-4 px-6 font-medium text-[13px] text-slate-100 font-heading">Research</td>
-                <td class="py-4 px-6">
-                  <div class="flex flex-wrap gap-1.5">
-                    <span class="primary-tag">User Interviews</span>
-                    <span class="primary-tag">Usability Testing</span>
-                    <span class="primary-tag">Journey Mapping</span>
-                    <span class="primary-tag">Competitive Analysis</span>
-                    <span class="primary-tag">Survey Design</span>
-                    <span class="primary-tag">Contextual Inquiry</span>
-                    <span class="primary-tag">Affinity Mapping</span>
-                  </div>
-                </td>
-              </tr>
-              <tr class="hover:bg-shadow-900/10 transition-colors">
-                <td class="py-4 px-6 font-medium text-[13px] text-slate-100 font-heading">Design</td>
-                <td class="py-4 px-6">
-                  <div class="flex flex-wrap gap-1.5">
-                    <span class="primary-tag">Figma</span>
-                    <span class="primary-tag">Wireframing</span>
-                    <span class="primary-tag">Prototyping</span>
-                    <span class="primary-tag">Design Systems</span>
-                    <span class="primary-tag">Interaction Design</span>
-                    <span class="primary-tag">Visual Design</span>
-                    <span class="primary-tag">Accessibility (WCAG)</span>
-                  </div>
-                </td>
-              </tr>
-              <tr class="hover:bg-shadow-900/10 transition-colors">
-                <td class="py-4 px-6 font-medium text-[13px] text-slate-100 font-heading">Development</td>
-                <td class="py-4 px-6">
-                  <div class="flex flex-wrap gap-1.5">
-                    <span class="primary-tag">HTML &amp; CSS</span>
-                    <span class="primary-tag">JavaScript</span>
-                    <span class="primary-tag">React</span>
-                    <span class="primary-tag">TypeScript</span>
-                    <span class="primary-tag">Storybook</span>
-                    <span class="primary-tag">Design Tokens</span>
-                    <span class="primary-tag">Animation APIs</span>
-                  </div>
-                </td>
-              </tr>
-              <tr class="hover:bg-shadow-900/10 transition-colors">
-                <td class="py-4 px-6 font-medium text-[13px] text-slate-100 font-heading">Data Analysis</td>
-                <td class="py-4 px-6">
-                  <div class="flex flex-wrap gap-1.5">
-                    <span class="primary-tag">R / Python</span>
-                    <span class="primary-tag">Statistical Modeling</span>
-                    <span class="primary-tag">Mixed-Effects Models</span>
-                    <span class="primary-tag">K-Means Clustering</span>
-                    <span class="primary-tag">Sociograms</span>
-                    <span class="primary-tag">Mixed-Methods</span>
-                    <span class="primary-tag">Quantitative Research</span>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="reveal reveal-d3 mt-8 border border-shadow-800/40 rounded-lg bg-shadow-900/5 divide-y divide-shadow-800/20 overflow-hidden">
+          
+          <!-- Research Row -->
+          <div class="flex flex-col md:grid md:grid-cols-[220px_1fr] p-5 md:p-6 gap-3 md:gap-6 hover:bg-shadow-900/10 transition-colors">
+            <div class="font-medium text-[13px] text-slate-100 font-heading self-start uppercase tracking-wider text-bronze-400 md:normal-case md:text-slate-100 md:tracking-normal">Research</div>
+            <div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="secondary-tag">User Interviews</span>
+                <span class="secondary-tag">Usability Testing</span>
+                <span class="secondary-tag">Journey Mapping</span>
+                <span class="secondary-tag">Competitive Analysis</span>
+                <span class="secondary-tag">Survey Design</span>
+                <span class="secondary-tag">Interviews</span>
+                <span class="secondary-tag">Affinity Mapping</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Design Row -->
+          <div class="flex flex-col md:grid md:grid-cols-[220px_1fr] p-5 md:p-6 gap-3 md:gap-6 hover:bg-shadow-900/10 transition-colors">
+            <div class="font-medium text-[13px] text-slate-100 font-heading self-start uppercase tracking-wider text-bronze-400 md:normal-case md:text-slate-100 md:tracking-normal">Design</div>
+            <div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="secondary-tag">Figma</span>
+                <span class="secondary-tag">Wireframing</span>
+                <span class="secondary-tag">Prototyping</span>
+                <span class="secondary-tag">Design Systems</span>
+                <span class="secondary-tag">Interaction Design</span>
+                <span class="secondary-tag">Visual Design</span>
+                <span class="secondary-tag">Accessibility (WCAG)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Development Row -->
+          <div class="flex flex-col md:grid md:grid-cols-[220px_1fr] p-5 md:p-6 gap-3 md:gap-6 hover:bg-shadow-900/10 transition-colors">
+            <div class="font-medium text-[13px] text-slate-100 font-heading self-start uppercase tracking-wider text-bronze-400 md:normal-case md:text-slate-100 md:tracking-normal">Development</div>
+            <div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="secondary-tag">HTML &amp; CSS</span>
+                <span class="secondary-tag">JavaScript</span>
+                <span class="secondary-tag">React</span>
+                <span class="secondary-tag">TypeScript</span>
+                <span class="secondary-tag">Mixed Reality</span>
+                <span class="secondary-tag">Design Tokens</span>
+                <span class="secondary-tag">API Integration</span>
+                <span class="secondary-tag">Databases</span>
+                <span class="secondary-tag">AI Workflows</span>
+                <span class="secondary-tag">Antigravity</span>
+                <span class="secondary-tag">Claude</span>
+                <span class="secondary-tag">GPT</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Analysis Row -->
+          <div class="flex flex-col md:grid md:grid-cols-[220px_1fr] p-5 md:p-6 gap-3 md:gap-6 hover:bg-shadow-900/10 transition-colors">
+            <div class="font-medium text-[13px] text-slate-100 font-heading self-start uppercase tracking-wider text-bronze-400 md:normal-case md:text-slate-100 md:tracking-normal">Data Analysis</div>
+            <div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="secondary-tag">R / Python</span>
+                <span class="secondary-tag">Statistical Modeling</span>
+                <span class="secondary-tag">Mixed Effects Models</span>
+                <span class="secondary-tag">K-Means Clustering</span>
+                <span class="secondary-tag">Sociograms</span>
+                <span class="secondary-tag">Mixed Methods</span>
+                <span class="secondary-tag">Quantitative Research</span>
+                <span class="secondary-tag">Qualitative Research</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -626,167 +497,71 @@
     <!-- EXPERIENCE -->
     <section class="py-24 border-t border-shadow-800/40 relative z-10" id="experience" data-bg-section="skills">
       <div class="max-w-[1100px] mx-auto px-8">
-        <div class="mb-14">
-          <span
-            class="reveal inline-block text-[11px] font-medium tracking-widest uppercase text-gold-400 mb-5">History</span>
-          <h2
-            class="reveal reveal-d1 text-[clamp(1.8rem,3.8vw,2.6rem)] font-medium leading-[1.15] text-slate-50 tracking-tight mb-4">
-            Professional Experience
-          </h2>
-          <p class="reveal reveal-d2 text-grey-300 leading-relaxed max-w-[480px]">
-            A history of bridging the gap between research, design, and software engineering.
-          </p>
+        <div class="flex items-center justify-between flex-wrap gap-4 mb-14">
+          <div>
+            <span
+              class="reveal inline-block text-[11px] font-medium tracking-widest uppercase text-gold-400 mb-5">Experience</span>
+            <h2
+              class="reveal reveal-d1 text-[clamp(1.8rem,3.8vw,2.6rem)] font-medium leading-[1.15] text-slate-50 tracking-tight mb-4">
+              Professional Experience
+            </h2>
+            <p class="reveal reveal-d2 text-grey-300 leading-relaxed max-w-[480px]">
+              I bring a diverse professional background, featuring extensive experience in both academic and industrial
+              sectors across Sri Lanka and New Zealand.
+            </p>
+          </div>
+          <a href="experience.html"
+            class="reveal reveal-d2 inline-flex items-center gap-2 text-[13px] font-medium text-grey-400 hover:text-gold-500 transition-colors duration-300">
+            View all
+            <svg class="w-4 h-4 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
         </div>
 
         <div class="reveal reveal-d3 flex flex-col gap-6">
 
-          <!-- Experience 1 -->
+          <!-- Experience 1: JIX Postdoc -->
           <div
             class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
             <div>
-              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Oct 2025 —
+              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Oct 2025 -
                 Present</span>
-              <h3 class="text-lg font-semibold text-slate-50 font-heading leading-tight">HCI Research Fellow</h3>
-              <div class="text-[13px] text-grey-450 mt-1">Jix Reality Pvt. Ltd.</div>
-              <div class="text-[12px] text-grey-500 mt-0.5">Christchurch, New Zealand</div>
-            </div>
-            <div>
-              <ul class="flex flex-col gap-3 list-none">
-                <li
-                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>AI &amp; XR Software Development:</strong> Built interactive XR prototypes integrating AI
-                  models and real-time interactions.
-                </li>
-                <li
-                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Proof-of-Concept Engineering:</strong> Rapid prototyping to validate research ideas into
-                  working demos and testable solutions.
-                </li>
-                <li
-                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Client Discovery &amp; Empathy:</strong> Client meetings, stakeholder interviews, requirements
-                  gathering, and insight translation.
-                </li>
-              </ul>
-
-              <!-- Collapsible Details -->
-              <div class="experience-details-collapsed hidden mt-3">
-                <ul class="flex flex-col gap-3 list-none">
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>UX &amp; Interaction Design (XR):</strong> Implemented user-centered UX, interaction design,
-                    and seamless AI-driven experiences.
-                  </li>
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Mentorship &amp; Technical Leadership:</strong> Mentored interns, provided technical
-                    guidance, and delivered milestones to deadlines.
-                  </li>
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Emerging Tech R&amp;D:</strong> Evaluated new frameworks, tools, and AI/XR platforms to
-                    support innovation.
-                  </li>
-                </ul>
-              </div>
-
-              <button
-                class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
-                See all details
-              </button>
-            </div>
-          </div>
-
-          <!-- Experience 2 -->
-          <div
-            class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
-            <div>
-              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Nov 2024 — Feb
-                2025</span>
-              <h3 class="text-lg font-semibold text-slate-55 font-heading leading-tight">HCI Research Fellow</h3>
-              <div class="text-[13px] text-grey-450 mt-1">Jix Reality Pvt. Ltd.</div>
-              <div class="text-[12px] text-grey-500 mt-0.5">Christchurch, New Zealand</div>
-            </div>
-            <div>
-              <ul class="flex flex-col gap-3 list-none">
-                <li
-                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Opportunity Discovery &amp; Market Insight:</strong> Web-scraped and analysed Unity asset
-                  market data to identify gaps/opportunities; delivered actionable recommendations.
-                </li>
-                <li
-                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>UCD Research Planning:</strong> Prepared UCD user study designs, including research plans and
-                  study protocols.
-                </li>
-              </ul>
-
-              <!-- Collapsible Details -->
-              <div class="experience-details-collapsed hidden mt-3">
-                <ul class="flex flex-col gap-3 list-none">
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Insight Synthesis (Human-AI Interaction):</strong> Conducted literature review and produced
-                    human-AI virtual interaction design guidelines.
-                  </li>
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Feasibility Study Documentation (Digital Humans):</strong> Documented feasibility study
-                    reporting on digital human experience considerations.
-                  </li>
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>R&amp;D Knowledge Documentation:</strong> Consolidated past R&amp;D project outputs into
-                    clear, reusable records.
-                  </li>
-                </ul>
-              </div>
-
-              <button
-                class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
-                See all details
-              </button>
-            </div>
-          </div>
-
-          <!-- Experience 3 -->
-          <div
-            class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
-            <div>
-              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Feb 2023 — Jun
-                2025</span>
-              <h3 class="text-lg font-semibold text-slate-55 font-heading leading-tight">Academic Tutor - UX Engineering
+              <h3 class="text-lg font-semibold text-slate-50 font-heading leading-tight">UX Researcher &amp; Developer
               </h3>
-              <div class="text-[13px] text-grey-450 mt-1">Victoria University of Wellington</div>
-              <div class="text-[12px] text-grey-500 mt-0.5">Wellington, New Zealand</div>
+              <div class="text-[13px] text-grey-400 mt-1">JIX Reality</div>
+              <div class="text-[12px] text-grey-500 mt-0.5">Canterbury, New Zealand · Hybrid</div>
+              <!-- Top 3 Skills -->
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="primary-tag">AI Prototyping</span>
+                <span class="primary-tag">UX Research</span>
+                <span class="primary-tag">XR Dev</span>
+              </div>
             </div>
             <div>
-              <ul class="flex flex-col gap-3 list-none">
-                <li
-                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>UX Research &amp; Evaluation Support:</strong> Supported students with UX methods including
-                  heuristic evaluation, cognitive walkthroughs, and usability testing, and interpreted findings into
-                  improvements.
+              <ul class="flex flex-col gap-3 experience-bullet-list">
+                <li>
+                  <strong>AI &amp; XR Prototyping:</strong> Lead the development of interactive XR prototypes and
+                  AI-integrated software solutions, transitioning research concepts into validated proof-of-concepts.
                 </li>
-                <li
-                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>UX Artefacts &amp; Prototyping:</strong> Guided creation of personas, user workflows, and
-                  journey maps, and supported evaluation of low-, mid-, and high-fidelity prototypes.
+                <li>
+                  <strong>R&amp;D Lifecycle &amp; Funding:</strong> Drive the R&amp;D lifecycle by conducting
+                  stakeholder discovery, gathering requirements, and authoring technical funding proposals and R&amp;D
+                  documentation.
                 </li>
               </ul>
 
               <!-- Collapsible Details -->
               <div class="experience-details-collapsed hidden mt-3">
-                <ul class="flex flex-col gap-3 list-none">
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Assessment &amp; Feedback:</strong> Marked essays, assignments, and examinations; provided
-                    clear, criteria-based feedback.
+                <ul class="flex flex-col gap-3 experience-bullet-list">
+                  <li>
+                    <strong>Workflow Optimization:</strong> Focused on optimising research pipelines through iterative
+                    AI adoption and gap analysis, utilising AI-assisted code pipelines to streamline development.
                   </li>
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Student &amp; Course Support:</strong> Staffed student helpdesk sessions and online
-                    discussion forums; attended staff meetings with coordinating lecturers.
+                  <li>
+                    <strong>Technical Leadership:</strong> Provide technical mentorship for interns and evaluate
+                    emerging frameworks to implement seamless, user-centered AI-driven experiences.
                   </li>
                 </ul>
               </div>
@@ -798,48 +573,40 @@
             </div>
           </div>
 
-          <!-- Experience 4 -->
+          <!-- Experience 2: VUW Doctoral Researcher -->
           <div
             class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
             <div>
-              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Mar 2017 — May
-                2021</span>
-              <h3 class="text-lg font-semibold text-slate-55 font-heading leading-tight">Lecturer &amp; Tutor</h3>
-              <div class="text-[13px] text-grey-450 mt-1">University of Kelaniya</div>
-              <div class="text-[12px] text-grey-500 mt-0.5">Colombo, Sri Lanka</div>
+              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Mar 2021 - Jul
+                2025</span>
+              <h3 class="text-lg font-semibold text-slate-50 font-heading leading-tight">Doctoral Researcher in HCI</h3>
+              <div class="text-[13px] text-grey-400 mt-1">Victoria University of Wellington</div>
+              <div class="text-[12px] text-grey-500 mt-0.5">Wellington, New Zealand · Hybrid</div>
+              <!-- Top 3 Skills -->
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="primary-tag">HCD / HCI</span>
+                <span class="primary-tag">User Studies</span>
+                <span class="primary-tag">Mixed-Methods</span>
+              </div>
             </div>
             <div>
-              <ul class="flex flex-col gap-3 list-none">
-                <li
-                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Teaching Delivery:</strong> Prepared and delivered lectures; facilitated tutorials, seminars,
-                  and laboratory sessions; stimulated and guided class discussions.
+              <ul class="flex flex-col gap-3 experience-bullet-list">
+                <li>
+                  <strong>Advanced HCI &amp; XR Research:</strong> Conducted advanced research at the intersection of
+                  Human-Computer Interaction (HCI), Artificial Intelligence, and Extended Reality (XR).
                 </li>
-                <li
-                  class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                  <strong>Assessment &amp; Learning Support:</strong> Designed and marked essays, assignments, and
-                  examinations; advised and supported students on academic matters.
+                <li>
+                  <strong>Social Catalyst Engineering:</strong> Researched how AI can be engineered as a "social
+                  catalyst" to enhance human-to-human interactions and mitigate psychological impacts of isolation.
                 </li>
               </ul>
 
               <!-- Collapsible Details -->
               <div class="experience-details-collapsed hidden mt-3">
-                <ul class="flex flex-col gap-3 list-none">
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Curriculum &amp; Academic Planning:</strong> Contributed to course/degree requirements,
-                    curriculum review, and academic planning; compiled bibliographies and curated specialised reading
-                    materials.
-                  </li>
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Supervision &amp; Leadership:</strong> Supervised honours student work programs and
-                    supported/supervised tutorial staff and teaching delivery.
-                  </li>
-                  <li
-                    class="relative text-[14px] text-grey-300 leading-[1.7] pl-[18px] before:content-[''] before:absolute before:left-0 before:top-[9px] before:width-[5px] before:height-[1px] before:bg-bronze-400">
-                    <strong>Health Data Analysis (Diary Studies):</strong> Partnered with the Faculty of Health to
-                    analyse 6M+ diary entries, supporting evidence-based findings and reporting.
+                <ul class="flex flex-col gap-3 experience-bullet-list">
+                  <li>
+                    <strong>End-to-End UX Research:</strong> Led participatory co-design workshops, user studies, and
+                    mixed-methods analysis to design and evaluate multiplayer social VR experiences.
                   </li>
                 </ul>
               </div>
@@ -849,10 +616,72 @@
                 See all details
               </button>
             </div>
+          </div>
+
+          <!-- Experience 3: JIX Internship -->
+          <div
+            class="experience-item p-6 md:p-8 rounded-[12px] glass-card flex flex-col md:grid md:grid-cols-[280px_1fr] gap-6 md:gap-10">
+            <div>
+              <span class="text-[11px] font-medium tracking-widest uppercase text-gold-500 block mb-2">Nov 2024 - Feb
+                2025</span>
+              <h3 class="text-lg font-semibold text-slate-50 font-heading leading-tight">HCI Research Fellow / XR
+                Innovation</h3>
+              <div class="text-[13px] text-grey-400 mt-1">JIX Reality</div>
+              <div class="text-[12px] text-grey-500 mt-0.5">Canterbury, New Zealand · On-site</div>
+              <!-- Top 3 Skills -->
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="primary-tag">Human-AI Interaction</span>
+                <span class="primary-tag">WebGL Dev</span>
+                <span class="primary-tag">Feasibility Reports</span>
+              </div>
+            </div>
+            <div>
+              <ul class="flex flex-col gap-3 experience-bullet-list">
+                <li>
+                  <strong>XR &amp; Human-AI Prototyping:</strong> Focused on technical research and prototyping to
+                  advance XR and Human-AI interaction.
+                </li>
+                <li>
+                  <strong>WebGL Engineering:</strong> Developed a WebGL proof-of-concept in Unity3D that allows users to
+                  control game objects using gyroscope data from mobile phones.
+                </li>
+              </ul>
+
+              <!-- Collapsible Details -->
+              <div class="experience-details-collapsed hidden mt-3">
+                <ul class="flex flex-col gap-3 experience-bullet-list">
+                  <li>
+                    <strong>Market Gap &amp; Feasibility Analysis:</strong> Conducted market gap analysis using
+                    web-scraping to identify growth opportunities; produced feasibility reports on digital human
+                    experiences and interaction guidelines.
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                class="experience-toggle-btn text-[12px] font-medium text-gold-400 hover:text-gold-300 mt-4 transition-colors cursor-pointer focus:outline-none">
+                See all details
+              </button>
+            </div>
+          </div>
+
+          <div class="reveal reveal-d4 flex justify-end mt-6">
+            <a href="experience.html"
+              class="inline-flex items-center gap-2 text-[13px] font-medium text-grey-400 hover:text-gold-500 transition-colors duration-300">
+              View all work experiences
+              <svg class="w-4 h-4 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
           </div>
 
         </div>
       </div>
+    </section>
+
+    </div>
+    </div>
     </section>
 
     <!-- MEDIA HIGHLIGHTS -->
@@ -865,7 +694,7 @@
           In the Spotlight
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[780px]">
           <!-- Card 1 (Active LinkedIn Post) -->
           <a href="https://www.linkedin.com/feed/update/urn:li:activity:7458059683744960512/" target="_blank"
             rel="noopener"
@@ -894,7 +723,7 @@
                   <circle cx="4" cy="4" r="2" />
                 </svg>
               </div>
-              <h3 class="text-base font-semibold text-slate-55 font-heading mb-2">VR &amp; AI Co-Design Research</h3>
+              <h3 class="text-base font-semibold text-slate-50 font-heading mb-2">VR &amp; AI Co-Design Research</h3>
               <p class="text-[13px] text-grey-300 leading-relaxed mb-6">
                 Sharing our latest doctoral research updates on using embodied AI agents to facilitate social
                 interactions inside multiplayer virtual reality environments.
@@ -928,7 +757,7 @@
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                 </svg>
               </div>
-              <h3 class="text-base font-semibold text-slate-55 font-heading mb-2">Tackling Teen Isolation</h3>
+              <h3 class="text-base font-semibold text-slate-50 font-heading mb-2">Tackling Teen Isolation</h3>
               <p class="text-[13px] text-grey-300 leading-relaxed mb-6">
                 Victoria University of Wellington engineering news highlight featuring my doctoral research on
                 multiplayer social VR.
@@ -942,34 +771,6 @@
               </span>
             </div>
           </a>
-
-          <!-- Card 3 (Placeholder) -->
-          <div
-            class="reveal reveal-d4 flex flex-col rounded-[12px] glass-card opacity-60 border-dashed border-shadow-800/60 overflow-hidden">
-            <div
-              class="aspect-video w-full bg-shadow-950/20 border-b border-shadow-800/40 flex items-center justify-center">
-              <svg class="w-8 h-8 text-grey-600 stroke-current fill-none stroke-[1.25]" viewBox="0 0 24 24"
-                aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg>
-            </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-[10px] font-medium tracking-widest uppercase text-grey-500">Upcoming Feature</span>
-                <svg class="w-4 h-4 text-grey-600 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"
-                  aria-hidden="true">
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </div>
-              <h3 class="text-base font-semibold text-grey-500 font-heading mb-2">Media Highlight #3</h3>
-              <p class="text-[13px] text-grey-600 leading-relaxed">
-                Waiting for links to showcase the next media highlight or article presentation details.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -986,7 +787,7 @@
               class="reveal reveal-d1 text-[clamp(1.8rem,3.8vw,2.6rem)] font-medium leading-[1.15] text-slate-50 tracking-tight mb-6">
               Let's build something worth using</h2>
             <p class="reveal reveal-d2 text-grey-300 leading-relaxed">
-              I'm open to senior UX Engineer, product design, and design–engineering lead roles. I also take on select
+              I'm open to UX Engineer, product design, and design–engineering lead roles. I also take on select
               consultancy projects for teams looking to close the gap between design and production.
             </p>
 
@@ -1047,8 +848,7 @@
                   required
                   class="w-full h-32 bg-shadow-950/60 border border-shadow-800 rounded-[6px] px-4 py-3 text-[14px] text-slate-100 placeholder:text-grey-600 transition-colors focus:outline-none focus:border-gold-500 resize-y"></textarea>
               </div>
-              <button type="submit"
-                class="inline-flex items-center gap-2 px-[22px] py-[11px] rounded-[6px] text-[13px] font-medium tracking-wide transition-all duration-150 active:scale-97 cursor-pointer bg-gradient-to-r from-gold-500 to-bronze-500 text-shadow-950 border-none shadow-[0_0_12px_rgba(217,172,38,0.15)] hover:brightness-110 self-start">
+              <button type="submit" class="btn-primary self-start">
                 Send message
                 <svg class="w-4 h-4 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24" aria-hidden="true">
                   <line x1="22" y1="2" x2="11" y2="13" />

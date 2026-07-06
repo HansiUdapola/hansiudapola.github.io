@@ -81,27 +81,53 @@ class Portfolio {
   }
 
   /**
-   * Highlights the active link in the navigation
+   * Scroll-spy: highlights the nav link matching the currently visible section.
+   * On non-index pages the links still point to index.html#section, so no
+   * observer is needed — none will be "active".
    */
   initActiveNavigationLink() {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const sections = document.querySelectorAll('section[id]');
+    if (!sections.length) return;           // not on index.html
+
     const navLinks = document.querySelectorAll('.nav__link');
+    const mobileLinks = document.querySelectorAll('.mobile-menu-link-transition');
 
-    navLinks.forEach(link => {
-      const href = (link.getAttribute('href') || '').split('/').pop();
-      const isActive = href === currentPath || (currentPath === '' && href === 'index.html');
+    const setActive = (id) => {
+      const hash = '#' + id;
 
-      link.classList.toggle('nav-link-active', isActive);
-      link.classList.toggle('nav-link-inactive', !isActive);
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href') || '';
+        const isMatch = href === hash;
+        link.classList.toggle('active', isMatch);
+      });
 
-      if (isActive) {
-        link.classList.add('text-slate-100');
-        link.classList.remove('text-grey-400');
-      } else {
-        link.classList.remove('text-slate-100');
-        link.classList.add('text-grey-400');
-      }
-    });
+      mobileLinks.forEach(link => {
+        const href = link.getAttribute('href') || '';
+        const isMatch = href === hash;
+        link.classList.toggle('active', isMatch);
+        // Also toggle text colour so inactive items stay grey
+        if (isMatch) {
+          link.classList.remove('text-grey-400');
+        } else {
+          link.classList.add('text-grey-400');
+        }
+      });
+    };
+
+    // Use IntersectionObserver with a large rootMargin so the section is
+    // considered "active" when it enters the top third of the viewport.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -60% 0px' }   // triggers when section is ~top-third
+    );
+
+    sections.forEach(section => observer.observe(section));
   }
 
   /**

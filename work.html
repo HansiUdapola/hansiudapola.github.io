@@ -10,7 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=1.3">
+  <script>
+    // Theme initialization (critical to run before paint to prevent flashing)
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+  </script>
 </head>
 
 <body
@@ -22,21 +29,20 @@
   <!-- Full Viewport Background Switcher -->
   <div class="portfolio-bg-container" aria-hidden="true">
     <div class="portfolio-bg-sheet active" data-bg="hero" style="background-image: var(--bg-hero);"></div>
-    <div class="portfolio-bg-sheet" data-bg="project-8"
+    <div class="portfolio-bg-sheet active" data-bg="project-8"
       style="background-image: var(--bg-project-8), url('assets/images/social-buddy-hero.jpg');"></div>
-    <div class="portfolio-bg-sheet" data-bg="project-6"
-      style="background-image: var(--bg-project-6), url('assets/images/comnap-all-stations.png');"></div>
-    <div class="portfolio-bg-sheet" data-bg="project-7" style="background-image: var(--bg-project-7);"></div>
   </div>
 
   <!-- MOBILE MENU OVERLAY -->
   <div
     class="mobile-menu fixed inset-0 z-[99] bg-shadow-950/95 backdrop-blur-lg flex flex-col justify-center items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-300"
     role="dialog" aria-label="Navigation menu">
-    <a href="index.html"
+    <a href="index.html#hero"
       class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">Home</a>
-    <a href="work.html"
+    <a href="index.html#work"
       class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">Work</a>
+    <a href="index.html#about"
+      class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">About</a>
     <a href="index.html#experience"
       class="mobile-menu-link-transition text-[clamp(1.6rem,5vw,2.2rem)] font-medium text-grey-400 tracking-tight px-6 py-2.5 hover:text-gold-500">Experience</a>
     <a href="index.html#contact"
@@ -54,8 +60,7 @@
     <div class="max-w-[1100px] mx-auto px-8 h-full">
       <div class="grid grid-cols-[auto_1fr_auto] items-center h-full gap-6">
 
-        <a href="index.html"
-          class="flex items-center transition-all duration-300 hover:opacity-85"
+        <a href="index.html" class="flex items-center transition-all duration-300 hover:opacity-85"
           aria-label="Hansi Udapola - Home">
           <img src="assets/images/hu-logo-darkback.png" alt="Hansi Udapola Logo" class="h-8 w-auto theme-logo-dark">
           <img src="assets/images/hu-logo-lightback.png" alt="Hansi Udapola Logo" class="h-8 w-auto theme-logo-light">
@@ -91,10 +96,12 @@
         </div>
 
         <div class="hidden md:flex items-center gap-1 justify-end">
-          <a href="index.html"
+          <a href="index.html#hero"
             class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">Home</a>
-          <a href="work.html"
+          <a href="index.html#work"
             class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">Work</a>
+          <a href="index.html#about"
+            class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">About</a>
           <a href="index.html#experience"
             class="nav__link relative px-3 py-1.75 rounded-[6px] text-[13px] font-medium text-grey-400 transition-all duration-300 hover:text-slate-100 hover:bg-shadow-900/40">Experience</a>
           <a href="index.html#contact"
@@ -127,31 +134,31 @@
         <span
           class="reveal inline-block text-[11px] font-medium tracking-widest uppercase text-gold-400 mb-5">Portfolio</span>
         <h1
-          class="reveal reveal-d1 font-medium leading-[1.15] text-slate-50 tracking-tight text-[clamp(2.4rem,5.5vw,4.2rem)]">
-          Selected projects</h1>
-        <p class="reveal reveal-d2 text-grey-300 leading-relaxed text-lg max-w-[640px] mt-6">Three real projects - 3D
-          web engineering, mixed reality research, and doctoral HCI work. Each one a different problem space, the same
-          commitment to rigour.</p>
+          class="reveal reveal-d1 font-medium leading-[1.15] text-slate-50 tracking-tight text-[clamp(2.4rem,5.5vw,4.2rem)] mb-4">
+          Featured Projects</h1>
+        <p class="reveal reveal-d2 text-grey-300 leading-relaxed max-w-[540px]">
+          A curated selection of projects spanning UX engineering, interactive design systems, and XR-AI development.
+        </p>
+
       </div>
     </div>
 
     <div class="pb-24">
       <div class="max-w-[1100px] mx-auto px-8">
 
-        <!-- Social Buddy - PhD featured wide card -->
-        <div class="w-full mb-8" data-bg-section="project-8">
-          <a href="case-study/project-3.html"
+        <!-- Social Buddy — PhD featured, full-width with real photo -->
+        <div class="mb-8" data-bg-section="project-8">
+          <a href="case-study/project-1.html"
             class="reveal reveal-d1 block rounded-[12px] overflow-hidden glass-card transition-all duration-300">
-            <div class="grid grid-cols-1 lg:grid-cols-[460px_1fr]">
-              <div class="min-h-[260px] lg:border-r border-shadow-800/40 overflow-hidden relative">
+            <div class="grid grid-cols-1 lg:grid-cols-[400px_1fr]">
+              <div class="min-h-[240px] lg:border-r border-shadow-800/40 overflow-hidden relative">
                 <img src="assets/images/social-buddy-hero.jpg"
-                  alt="Hansi Udapola holding a VR headset in front of the Social Buddy Unity prototype"
-                  class="w-full h-full object-cover object-[center_20%] transition-transform duration-700 ease-out hover:scale-105">
+                  alt="Hansi Udapola holding a VR headset — Social Buddy PhD project"
+                  class="w-full h-full object-cover object-[center_18%] transition-transform duration-700 ease-out hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-r from-shadow-950/40 to-transparent pointer-events-none">
                 </div>
-                <!-- PhD badge overlay -->
                 <div
-                  class="absolute bottom-4 left-4 inline-flex items-center gap-1.5 px-3.5 py-1.25 rounded-full bg-shadow-950/85 border border-gold-500/30 text-[11px] font-medium text-gold-300 tracking-wide">
+                  class="absolute bottom-[14px] left-[14px] inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-shadow-950/80 border border-gold-500/30 text-[11px] font-medium text-gold-300 tracking-wide">
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     aria-hidden="true">
                     <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
@@ -161,112 +168,29 @@
                 </div>
               </div>
               <div class="p-8 md:p-10 flex flex-col justify-center">
-                <div class="text-[10px] font-medium tracking-widest uppercase text-grey-400 mb-3.5">Lead UX Researcher /
-                  PhD Candidate · HCI</div>
-                <h3 class="text-xl md:text-2xl font-medium text-slate-50 mb-3">Social Buddy - AI-Powered VR Companion
-                  for Isolated Adolescents</h3>
+                <div class="text-[10px] font-medium tracking-widest uppercase text-gold-500/90 mb-3.5">Doctoral
+                  Researcher · HCI · Digital Health</div>
+                <h3 class="text-xl md:text-2xl font-medium text-slate-50 mb-3">
+                  Social Buddy - Virtual Agents for Isolated Adolescents
+                </h3>
                 <p class="text-[14.5px] text-grey-300 leading-relaxed mb-6">
-                  Doctoral research designing, building, and evaluating an AI-powered NPC "social buddy" inside a
-                  multiplayer VR game - helping medically isolated teenagers reconnect with peers through shared play.
-                  20 participants, 4 research phases, and 5 generalisable UX design guidelines for socially facilitative
-                  AI.
+                  Doctoral research project involved designing, developing, and evaluating an AI-driven Virtual Reality
+                  environment featuring embodied conversational agents to support medically isolated adolescents. The
+                  system aimed to safely mediate and improve social interactions between hospitalised teenagers and
+                  their peers. The work spanned the entire HCI lifecycle, including participatory co-design workshops,
+                  technical VR development in Unity, and rigorous mixed-methods statistical evaluation to measure the
+                  impact of the virtual mediators.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">VR
-                    / XR Design</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">AI
-                    NPC Design</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Co-design</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Unity
-                    3D · OpenAI</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Mixed-Methods
-                    Research</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-bronze-950 border border-bronze-800/40 text-bronze-300">Large
-                    effect on social isolation</span>
+                  <span class="primary-tag">HCD</span>
+                  <span class="primary-tag">HCI</span>
+                  <span class="primary-tag">XR Dev</span>
+                  <span class="primary-tag">Virtual Agents</span>
+                  <span class="primary-tag">Analytical Insights</span>
                 </div>
               </div>
             </div>
           </a>
-        </div>
-
-        <!-- 2-column grid: COMNAP + SeeThrough -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-          <div data-bg-section="project-6">
-            <a href="case-study/project-1.html"
-              class="reveal reveal-d2 block rounded-[12px] overflow-hidden glass-card transition-all duration-300">
-              <div class="aspect-video bg-shadow-900/30 border-b border-shadow-800/40 overflow-hidden">
-                <img src="assets/images/comnap-all-stations.png"
-                  alt="COMNAP - Antarctica 3D platform showing all research stations"
-                  class="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105">
-              </div>
-              <div class="p-8">
-                <div class="text-[10px] font-medium tracking-widest uppercase text-grey-400 mb-3.5">Lead Developer &amp;
-                  UI Designer</div>
-                <h3 class="text-lg md:text-xl font-medium text-slate-50 mb-3">COMNAP - 3D Platform Transformation</h3>
-                <p class="text-[14px] text-grey-300 leading-relaxed mb-6">Rebuilt a static Unity WebGL viewer into an
-                  interactive React + Three.js platform. Progressive GLTF loading, a no-code admin dashboard backed by
-                  Firestore, and a searchable 3D data layer - all engineered with AI-assisted development.</p>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">React
-                    + Three.js</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Firestore</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">AI-Assisted
-                    Dev</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-bronze-950 border border-bronze-800/40 text-bronze-300">80%
-                    faster perceived load</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div data-bg-section="project-7">
-            <a href="case-study/project-2.html"
-              class="reveal reveal-d3 block rounded-[12px] overflow-hidden glass-card transition-all duration-300">
-              <div class="aspect-video bg-shadow-900/30 border-b border-shadow-800/40 relative">
-                <div
-                  class="absolute inset-0 flex flex-col justify-center items-center gap-1.5 p-6 text-center select-none bg-shadow-900/40">
-                  <span class="text-4xl font-medium text-grey-400/30 tracking-tight">07</span>
-                  <span class="text-[10px] font-medium tracking-widest uppercase text-grey-500">Mixed Reality ·
-                    Accessibility</span>
-                </div>
-              </div>
-              <div class="p-8">
-                <div class="text-[10px] font-medium tracking-widest uppercase text-grey-400 mb-3.5">Lead Researcher
-                  &amp; Developer</div>
-                <h3 class="text-lg md:text-xl font-medium text-slate-50 mb-3">SeeThrough - Mixed Reality Vision
-                  Impairment Simulation</h3>
-                <p class="text-[14px] text-grey-300 leading-relaxed mb-6">A dual-mode MR/VR platform that overlays
-                  clinically-grounded vision impairment simulations onto physical and virtual spaces - turning
-                  architectural accessibility from a compliance checklist into a felt, embodied design constraint. Built
-                  with Blind Low Vision NZ.</p>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Mixed
-                    Reality</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Clinical
-                    Research</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-shadow-900 border border-shadow-800 text-grey-300">Accessibility</span>
-                  <span
-                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] font-medium tracking-wide bg-bronze-950 border border-bronze-800/40 text-bronze-300">Empathy
-                    engineering</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
         </div>
 
       </div>
