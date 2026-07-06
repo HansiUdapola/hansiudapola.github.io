@@ -29,6 +29,7 @@ class Portfolio {
     this.initTypewriter();
     this.initThemeToggle();
     this.initExperienceToggles();
+    this.initReadMoreToggles();
   }
 
   /**
@@ -493,6 +494,30 @@ class Portfolio {
         } else {
           details.classList.add('hidden');
           btn.textContent = 'See all details';
+        }
+      });
+    });
+  }
+
+  /**
+   * Toggles visibility of long project description text paragraphs
+   */
+  initReadMoreToggles() {
+    const readMoreBtns = document.querySelectorAll('.read-more-btn');
+    readMoreBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const desc = btn.previousElementSibling;
+        if (desc) {
+          const isClamped = desc.classList.contains('line-clamp-3');
+          if (isClamped) {
+            desc.classList.remove('line-clamp-3');
+            btn.textContent = 'Read less';
+          } else {
+            desc.classList.add('line-clamp-3');
+            btn.textContent = 'Read more';
+          }
         }
       });
     });
