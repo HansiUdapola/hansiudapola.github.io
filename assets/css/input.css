@@ -242,7 +242,7 @@ body {
   color: var(--text-panel-dark);
   margin-bottom: 40px;
   transition: color var(--t);
-  padding-top: 32px;
+  padding-top: 96px; /* Offset for fixed 64px navbar */
 }
 
 .cs-back svg {
